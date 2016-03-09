@@ -1,19 +1,14 @@
 ﻿using System;
 using System.Threading;
 
-namespace Every
+namespace Every.Jobs
 {
     public class FixedIntervalJob : Job
     {
-        internal FixedIntervalJob(Action<Job> job)
-            : base(job)
+        internal FixedIntervalJob(Action<Job> job, JobConfiguration configuration)
+            : base(job, configuration)
         {
-        }
-
-
-        protected override void AddTimer(Action<Job> job, JobConfiguration configuration)
-        {
-            Timers.Add(new Timer((e) => JobAction(this), null, configuration.Delay, configuration.IntervalInSeconds * 1000));
+            Timer = new Timer((e) => job(this), null, configuration.Delay, configuration.IntervalInSeconds * 1000);
         }
     }
 }

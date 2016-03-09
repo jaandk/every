@@ -47,6 +47,7 @@
     <Compile Include="Builders\PluralBuilder.cs" />
     <Compile Include="Builders\SingularBuilder.cs" />
     <Compile Include="Eve.cs" />
+    <Compile Include="Jobs\DayOfWeekJob.cs" />
     <Compile Include="Jobs\FixedIntervalJob.cs" />
     <Compile Include="Jobs\Job.cs" />
     <Compile Include="Builders\JobBuilder.cs" />

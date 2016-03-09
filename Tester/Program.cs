@@ -8,9 +8,9 @@ namespace Tester
     {
         static void Main(string[] args)
         {
-            Action<Job> task = (job) => Console.WriteLine($"Event happened at '{DateTime.Now}'");
+            Action task = () => Console.WriteLine($"Event happened at '{DateTime.Now}'");
 
-            Eve.ry(15).Seconds().Do(task);
+            Eve.ry(DayOfWeek.Monday, DayOfWeek.Wednesday, DayOfWeek.Friday).At(15, 00).Do(task);
 
             Thread.Sleep(Timeout.Infinite);
         }

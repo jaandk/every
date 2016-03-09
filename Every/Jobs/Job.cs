@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading;
 
 namespace Every
@@ -7,29 +6,21 @@ namespace Every
     public class Job
     {
         internal Action<Job> JobAction { get; set; }
-        protected internal List<Timer> Timers { get; private set; }
+        internal JobConfiguration Configuration { get; set; }
 
-        internal Job(Action<Job> job)
+        internal Timer Timer { get; set; }
+
+        internal Job(Action<Job> job, JobConfiguration configuration)
         {
             JobAction = job;
-            Timers = new List<Timer>();
+            Configuration = configuration;
         }
 
 
-        public void Cancel()
+        public virtual void Cancel()
         {
-            var timersCopy = new List<Timer>(Timers);
-
-            foreach (var timer in timersCopy)
-            {
-                timer.Dispose();
-                Timers.Remove(timer);
-            }
-        }
-
-        protected virtual void AddTimer(Action<Job> job, JobConfiguration configuration)
-        {
-            throw new NotImplementedException("Developer is an idiot");
+            Timer?.Dispose();
+            Timer = null;
         }
     }
 }

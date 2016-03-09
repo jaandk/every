@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Every.Jobs;
+using System;
 
 namespace Every
 {
@@ -14,28 +15,32 @@ namespace Every
 
         public Job Do(Action<Job> job)
         {
-            if (!Eve.Jobs.ContainsKey(job))
-                Eve.Jobs[job] = CreateJob(job);
-
-            return Eve.Jobs[job];
-        }
-
-
-        private Job CreateJob(Action<Job> job)
-        {
             switch (Configuration.JobType)
             {
                 case JobType.FixedInterval:
                     return CreateFixedIntervalJob(job);
 
-                default:
-                    return null;
+                case JobType.DayOfWeek:
+                    return CreateDayOfWeekJob(job);
             }
+
+            return null;
         }
+
+        public Job Do(Action job)
+        {
+            return Do((j) => job());
+        }
+
 
         private FixedIntervalJob CreateFixedIntervalJob(Action<Job> job)
         {
-            return new FixedIntervalJob(job);
+            return new FixedIntervalJob(job, Configuration);
+        }
+
+        private DayOfWeekJob CreateDayOfWeekJob(Action<Job> jobAction)
+        {
+            return new DayOfWeekJob(jobAction, Configuration);
         }
     }
 }
