@@ -49,7 +49,7 @@ namespace Every
             {
                 job.Action(job);
 
-                job.Next = job.CalculateNext(now);
+                job.Next = job.CalculateNext(job);
             });
         }
     }

@@ -14,7 +14,7 @@
         {
             get
             {
-                Parameters.CalculateNext = (now) => now.AddSeconds(Parameters.N);
+                Parameters.CalculateNext = (job) => job.Next.AddSeconds(Parameters.N);
 
                 return new JobBuilder(Parameters);
             }
@@ -24,7 +24,7 @@
         {
             get
             {
-                Parameters.CalculateNext = (now) => now.AddMinutes(Parameters.N);
+                Parameters.CalculateNext = (job) => job.Next.AddMinutes(Parameters.N);
 
                 return new JobBuilder(Parameters);
             }
@@ -34,7 +34,7 @@
         {
             get
             {
-                Parameters.CalculateNext = (now) => now.AddHours(Parameters.N);
+                Parameters.CalculateNext = (job) => job.Next.AddHours(Parameters.N);
 
                 return new JobBuilder(Parameters);
             }
@@ -44,7 +44,7 @@
         {
             get
             {
-                Parameters.CalculateNext = (now) => now.AddDays(Parameters.N);
+                Parameters.CalculateNext = (job) => job.Next.AddDays(Parameters.N);
 
                 return new DaysBuilder(Parameters);
             }

@@ -7,7 +7,7 @@ namespace Every
         public long N { get; set; }
         public DayOfWeek[] DaysOfWeek { get; set; }
 
-        public Func<DateTime, DateTime> CalculateNext { get; set; }
+        public Func<Job, DateTime> CalculateNext { get; set; }
         public DateTime Next { get; set; }
 
         internal JobParameters(int n = 1)

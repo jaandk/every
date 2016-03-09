@@ -5,7 +5,7 @@ namespace Every
     public class Job
     {
         protected internal Action<Job> Action { get; set; }
-        protected internal Func<DateTime, DateTime> CalculateNext { get; set; }
+        protected internal Func<Job, DateTime> CalculateNext { get; set; }
         protected internal JobParameters Parameters { get; set; }
 
         /// <summary>
