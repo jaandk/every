@@ -10,7 +10,7 @@ namespace Tester
         {
             Action task = () => Console.WriteLine($"Event happened at '{DateTime.Now}'");
 
-            Eve.ry().Day.At(14, 48).Do(task);
+            Eve.ry().Day.At(15, 30).Do(task);
 
             Thread.Sleep(Timeout.Infinite);
         }

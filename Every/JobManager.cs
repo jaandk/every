@@ -19,7 +19,20 @@ namespace Every
         {
             Jobs = new List<Job>();
 
-            _timer = new Timer(OnTimerElapsed, null, 0, 250);
+            Start();
+        }
+
+
+        public void Start()
+        {
+            if (_timer == null)
+                _timer = new Timer(OnTimerElapsed, null, 0, 250);
+        }
+
+        public void Stop()
+        {
+            _timer?.Dispose();
+            _timer = null;
         }
 
 
@@ -27,11 +40,11 @@ namespace Every
         {
             var now = DateTime.Now;
 
-            Parallel.ForEach(Jobs.Where(j => now >= j.Next), (job) =>
+            Parallel.ForEach(Jobs.Where(j => now >= j.Next), job =>
             {
-                job.JobAction(job);
+                job.Action(job);
 
-                job.CalculateNextRun(now);
+                job.Next = job.CalculateNext(now);
             });
         }
     }

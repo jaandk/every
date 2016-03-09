@@ -2,11 +2,15 @@
 {
     public class PluralBuilder
     {
-        protected internal JobConfiguration Configuration { get; set; }
+        private long _n;
 
-        internal PluralBuilder(JobConfiguration configuration)
+        protected internal Job Job { get; set; }
+
+        internal PluralBuilder(Job job, long n)
         {
-            Configuration = configuration;
+            Job = job;
+
+            _n = n;
         }
 
 
@@ -14,9 +18,9 @@
         {
             get
             {
-                Configuration.IntervalInSeconds = Configuration.N;
+                Job.CalculateNext = (now) => now.AddSeconds(_n);
 
-                return new JobBuilder(Configuration);
+                return new JobBuilder(Job);
             }
         }
 
@@ -24,9 +28,9 @@
         {
             get
             {
-                Configuration.IntervalInSeconds = Configuration.N * 60;
+                Job.CalculateNext = (now) => now.AddMinutes(_n);
 
-                return new JobBuilder(Configuration);
+                return new JobBuilder(Job);
             }
         }
 
@@ -34,9 +38,9 @@
         {
             get
             {
-                Configuration.IntervalInSeconds = Configuration.N * 60 * 60;
+                Job.CalculateNext = (now) => now.AddHours(_n);
 
-                return new JobBuilder(Configuration);
+                return new JobBuilder(Job);
             }
         }
 
@@ -44,9 +48,9 @@
         {
             get
             {
-                Configuration.IntervalInSeconds = Configuration.N * 60 * 60 * 24;
+                Job.CalculateNext = (now) => now.AddDays(_n);
 
-                return new DaysBuilder(Configuration);
+                return new DaysBuilder(Job);
             }
         }
     }

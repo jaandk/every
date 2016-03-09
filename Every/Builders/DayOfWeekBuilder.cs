@@ -4,9 +4,12 @@ namespace Every
 {
     public class DayOfWeekBuilder : JobBuilder
     {
-        internal DayOfWeekBuilder(JobConfiguration configuration)
-            : base(configuration)
+        private DayOfWeek[] _daysOfWeek;
+
+        internal DayOfWeekBuilder(Job job, DayOfWeek[] daysOfWeek)
+            : base(job)
         {
+            _daysOfWeek = daysOfWeek;
         }
 
 

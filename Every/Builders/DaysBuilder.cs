@@ -4,22 +4,23 @@ namespace Every
 {
     public class DaysBuilder : JobBuilder
     {
-        internal DaysBuilder(JobConfiguration configuration)
-            : base(configuration)
+        internal DaysBuilder(Job job)
+            : base(job)
         {
         }
 
 
         public JobBuilder At(TimeSpan at)
         {
-            var now = DateTime.Now.TimeOfDay;
+            var nowDate = DateTime.Now;
+            var nowTime = nowDate.TimeOfDay;
 
-            if (now > at)
-                Configuration.Delay = (long)(new TimeSpan(24, 0, 0).TotalMilliseconds - (now - at).TotalMilliseconds);
-            else
-                Configuration.Delay = (long)((at - now).TotalMilliseconds);
+            Job.Next = nowDate.Add(at - nowTime);
 
-            return new JobBuilder(Configuration);
+            if (nowTime > at)
+                Job.Next = Job.Next.AddDays(1);
+                
+            return new JobBuilder(Job);
         }
 
         public JobBuilder At(int hours, int minutes, int seconds = 0)
