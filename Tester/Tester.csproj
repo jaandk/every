@@ -50,9 +50,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Every\Every.csproj">
+    <ProjectReference Include="..\Every\Ever.y.csproj">
       <Project>{580e5a82-d86f-48cd-ba78-7545e14f0879}</Project>
-      <Name>Every</Name>
+      <Name>Ever.y</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
