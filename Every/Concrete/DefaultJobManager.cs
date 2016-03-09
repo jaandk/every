@@ -38,12 +38,7 @@ namespace Every.Concrete
         {
             var now = DateTime.Now;
 
-            Parallel.ForEach(Jobs.Where(j => now >= j.Next), job =>
-            {
-                job.Action(job);
-
-                job.Next = job.CalculateNext(job);
-            });
+            Parallel.ForEach(Jobs.Where(j => now >= j.Next), job => job.Execute());
         }
     }
 }

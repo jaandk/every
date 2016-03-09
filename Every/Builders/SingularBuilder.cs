@@ -2,9 +2,9 @@
 {
     public class SingularBuilder
     {
-        internal JobParameters Parameters { get; set; }
+        internal JobConfiguration Parameters { get; set; }
 
-        internal SingularBuilder(JobParameters jobParams)
+        internal SingularBuilder(JobConfiguration jobParams)
         {
             Parameters = jobParams;
         }
@@ -14,7 +14,7 @@
         {
             get
             {
-                Parameters.CalculateNext = (job) => job.Next.AddSeconds(1);
+                Parameters.CalculateNext = job => job.Next.AddSeconds(1);
 
                 return new JobBuilder(Parameters);
             }
@@ -24,7 +24,7 @@
         {
             get
             {
-                Parameters.CalculateNext = (job) => job.Next.AddMinutes(1);
+                Parameters.CalculateNext = job => job.Next.AddMinutes(1);
 
                 return new JobBuilder(Parameters);
             }
@@ -34,7 +34,7 @@
         {
             get
             {
-                Parameters.CalculateNext = (job) => job.Next.AddHours(1);
+                Parameters.CalculateNext = job => job.Next.AddHours(1);
 
                 return new JobBuilder(Parameters);
             }
@@ -44,7 +44,7 @@
         {
             get
             {
-                Parameters.CalculateNext = (job) => job.Next.AddDays(1);
+                Parameters.CalculateNext = job => job.Next.AddDays(1);
 
                 return new AtBuilder(Parameters);
             }

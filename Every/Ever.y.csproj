@@ -52,7 +52,7 @@
     <Compile Include="Job.cs" />
     <Compile Include="Builders\JobBuilder.cs" />
     <Compile Include="JobManager.cs" />
-    <Compile Include="JobParameters.cs" />
+    <Compile Include="Builders\JobConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

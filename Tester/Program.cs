@@ -10,7 +10,7 @@ namespace Tester
         {
             Action task = () => Console.WriteLine($"Event happened at '{DateTime.Now}'");
 
-            var job = Ever.y(2, DayOfWeek.Tuesday).OfTheMonth.At(15, 0).Do(task);
+            var job = Ever.y(3, DayOfWeek.Friday).OfTheMonth.At(15, 0).Do(task);
 
             Thread.Sleep(Timeout.Infinite);
         }

@@ -2,9 +2,9 @@
 {
     public class PluralBuilder
     {
-        internal JobParameters Parameters { get; set; }
+        internal JobConfiguration Parameters { get; set; }
 
-        internal PluralBuilder(JobParameters jobParams)
+        internal PluralBuilder(JobConfiguration jobParams)
         {
             Parameters = jobParams;
         }
@@ -14,7 +14,7 @@
         {
             get
             {
-                Parameters.CalculateNext = (job) => job.Next.AddSeconds(Parameters.N);
+                Parameters.CalculateNext = job => job.Next.AddSeconds(Parameters.N);
 
                 return new JobBuilder(Parameters);
             }
@@ -24,7 +24,7 @@
         {
             get
             {
-                Parameters.CalculateNext = (job) => job.Next.AddMinutes(Parameters.N);
+                Parameters.CalculateNext = job => job.Next.AddMinutes(Parameters.N);
 
                 return new JobBuilder(Parameters);
             }
@@ -34,7 +34,7 @@
         {
             get
             {
-                Parameters.CalculateNext = (job) => job.Next.AddHours(Parameters.N);
+                Parameters.CalculateNext = job => job.Next.AddHours(Parameters.N);
 
                 return new JobBuilder(Parameters);
             }
@@ -44,7 +44,7 @@
         {
             get
             {
-                Parameters.CalculateNext = (job) => job.Next.AddDays(Parameters.N);
+                Parameters.CalculateNext = job => job.Next.AddDays(Parameters.N);
 
                 return new AtBuilder(Parameters);
             }

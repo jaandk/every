@@ -4,9 +4,9 @@ namespace Every.Builders
 {
     public class JobBuilder
     {
-        internal JobParameters Parameters { get; set; }
+        internal JobConfiguration Parameters { get; set; }
 
-        internal JobBuilder(JobParameters jobParams)
+        internal JobBuilder(JobConfiguration jobParams)
         {
             Parameters = jobParams;
         }

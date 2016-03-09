@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Every
+namespace Every.Builders
 {
-    public class JobParameters
+    public class JobConfiguration
     {
         public long N { get; set; }
         public int Nth { get; set; }
@@ -13,20 +13,20 @@ namespace Every
         public Func<Job, DateTime> CalculateNext { get; set; }
         public DateTime Next { get; set; }
 
-        internal JobParameters(long n = 1)
+        internal JobConfiguration(long n = 1)
         {
             N = n;
 
             Next = DateTime.Now;
         }
 
-        internal JobParameters(DayOfWeek[] daysOfWeek)
+        internal JobConfiguration(DayOfWeek[] daysOfWeek)
             : this()
         {
             DaysOfWeek = daysOfWeek;
         }
 
-        internal JobParameters(int nth, DayOfWeek dayOfWeek)
+        internal JobConfiguration(int nth, DayOfWeek dayOfWeek)
             : this()
         {
             Nth = nth;

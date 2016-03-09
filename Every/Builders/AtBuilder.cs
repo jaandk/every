@@ -4,10 +4,11 @@ namespace Every.Builders
 {
     public class AtBuilder : JobBuilder
     {
-        internal AtBuilder(JobParameters jobParams)
+        internal AtBuilder(JobConfiguration jobParams)
             : base(jobParams)
         {
         }
+
 
         public JobBuilder At(TimeSpan at)
         {

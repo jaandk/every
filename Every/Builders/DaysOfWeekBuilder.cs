@@ -4,15 +4,15 @@ namespace Every.Builders
 {
     public class DayOfWeekBuilder : AtBuilder
     {
-        internal DayOfWeekBuilder(JobParameters jobParams)
+        internal DayOfWeekBuilder(JobConfiguration jobParams)
             : base(jobParams)
         {
             while (!Parameters.DaysOfWeek.Contains(Parameters.Next.DayOfWeek))
                 Parameters.Next = Parameters.Next.AddDays(1);
 
-            Parameters.CalculateNext = (job) =>
+            Parameters.CalculateNext = job =>
             {
-                var next = Parameters.Next;
+                var next = job.Next;
 
                 do
                     next = next.AddDays(1);

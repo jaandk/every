@@ -14,7 +14,7 @@ namespace Every
         /// <returns></returns>
         public static SingularBuilder y()
         {
-            return new SingularBuilder(new JobParameters());
+            return new SingularBuilder(new JobConfiguration());
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace Every
             if (n < 2)
                 throw new ArgumentOutOfRangeException(nameof(n), "Cannot be less than 2.");
 
-            return new PluralBuilder(new JobParameters(n));
+            return new PluralBuilder(new JobConfiguration(n));
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Every
         /// <returns></returns>
         public static DayOfWeekBuilder y(params DayOfWeek[] daysOfWeek)
         {
-            return new DayOfWeekBuilder(new JobParameters(daysOfWeek));
+            return new DayOfWeekBuilder(new JobConfiguration(daysOfWeek));
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Every
             if (nth < 1)
                 throw new ArgumentOutOfRangeException(nameof(nth), "Cannot be less than 2.");
 
-            return new NthDayOfWeekBuilder(new JobParameters(nth, dayOfWeek));
+            return new NthDayOfWeekBuilder(new JobConfiguration(nth, dayOfWeek));
         }
     }
 }

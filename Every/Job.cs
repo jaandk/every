@@ -1,19 +1,20 @@
-﻿using System;
+﻿using Every.Builders;
+using System;
 
 namespace Every
 {
     public class Job
     {
+        protected Func<Job, DateTime> CalculateNext { get; set; }
         protected internal Action<Job> Action { get; set; }
-        protected internal Func<Job, DateTime> CalculateNext { get; set; }
-        protected internal JobParameters Parameters { get; set; }
+        protected internal JobConfiguration Parameters { get; set; }
 
         /// <summary>
         /// Gets next time that this job will be executed at.
         /// </summary>
-        public DateTime Next { get; protected internal set; }
+        public DateTime Next { get; protected set; }
 
-        internal Job(JobParameters jobParams)
+        internal Job(JobConfiguration jobParams)
         {
             Parameters = jobParams;
 
@@ -21,7 +22,7 @@ namespace Every
             Next = jobParams.Next;
         }
 
-        internal Job(Action<Job> action, JobParameters jobParams)
+        internal Job(Action<Job> action, JobConfiguration jobParams)
             : this(jobParams)
         {
             Action = action;
@@ -35,6 +36,14 @@ namespace Every
         {
             JobManager.Current.Jobs.Remove(this);
         }
+
+
+        internal void Execute()
+        {
+            Action(this);
+
+            Next = CalculateNext(this);
+        }
     }
 
     public class Job<TMetadata> : Job
@@ -44,10 +53,10 @@ namespace Every
         /// </summary>
         public TMetadata Metadata { get; set; }
 
-        internal Job(Action<Job<TMetadata>> action, JobParameters jobParams, TMetadata metadata)
+        internal Job(Action<Job<TMetadata>> action, JobConfiguration jobParams, TMetadata metadata)
             : base(jobParams)
         {
-            Action = (job) => action(this);
+            Action = job => action(this);
 
             Metadata = metadata;
         }
