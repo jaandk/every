@@ -5,10 +5,8 @@ Ever.y is a fluent API job scheduling engine for .NET.
 ## Examples
 
 ```c#
-Action job = () => Console.WriteLine("Hello world!");
-
-Ever.y().Second.Do(job); // Every second, do 'job'
-Ever.y(2).Days.At(15, 00).Do(job); // Every 2 days at 15:00, do 'job'
+Ever.y().Second.Do(() => Console.WriteLine("Every second, do this"));
+Ever.y(2).Days.At(15, 00).Do(() => Console.WriteLine("Every 2 days at 15:00, do this"));
 ```
 
 ```c#
