@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Every.Implementations
+namespace Every.Concrete
 {
     public class DefaultJobManager : IJobManager 
     {

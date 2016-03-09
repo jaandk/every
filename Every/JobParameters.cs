@@ -10,7 +10,7 @@ namespace Every
         public Func<Job, DateTime> CalculateNext { get; set; }
         public DateTime Next { get; set; }
 
-        internal JobParameters(int n = 1)
+        internal JobParameters(long n = 1)
         {
             N = n;
 

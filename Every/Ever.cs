@@ -21,7 +21,7 @@ namespace Every
         /// </summary>
         /// <param name="n">The amount of units (seconds, minutes, ...).</param>
         /// <returns></returns>
-        public static PluralBuilder y(int n)
+        public static PluralBuilder y(long n)
         {
             return new PluralBuilder(new JobParameters(n));
         }
