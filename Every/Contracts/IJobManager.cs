@@ -4,6 +4,9 @@ namespace Every.Contracts
 {
     public interface IJobManager
     {
+        /// <summary>
+        /// Gets all jobs in the job manager.
+        /// </summary>
         IList<Job> Jobs { get; }
 
         /// <summary>

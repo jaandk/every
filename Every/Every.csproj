@@ -46,7 +46,7 @@
     <Compile Include="Builders\SingularBuilder.cs" />
     <Compile Include="Contracts\IJobManager.cs" />
     <Compile Include="Ever.cs" />
-    <Compile Include="DefaultJobManager.cs" />
+    <Compile Include="Implementations\DefaultJobManager.cs" />
     <Compile Include="Job.cs" />
     <Compile Include="Builders\JobBuilder.cs" />
     <Compile Include="JobManager.cs" />

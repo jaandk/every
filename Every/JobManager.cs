@@ -1,4 +1,5 @@
 ﻿using Every.Contracts;
+using Every.Implementations;
 
 namespace Every
 {

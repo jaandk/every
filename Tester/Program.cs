@@ -11,7 +11,7 @@ namespace Tester
             Action task = () => Console.WriteLine($"Event happened at '{DateTime.Now}'");
 
 
-
+            Ever.y().Second.Do(task);
 
 
             Thread.Sleep(Timeout.Infinite);
