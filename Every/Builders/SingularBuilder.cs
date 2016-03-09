@@ -1,4 +1,4 @@
-﻿namespace Every
+﻿namespace Every.Builders
 {
     public class SingularBuilder
     {
@@ -40,13 +40,13 @@
             }
         }
 
-        public DaysBuilder Day
+        public AtBuilder Day
         {
             get
             {
                 Parameters.CalculateNext = (job) => job.Next.AddDays(1);
 
-                return new DaysBuilder(Parameters);
+                return new AtBuilder(Parameters);
             }
         }
     }

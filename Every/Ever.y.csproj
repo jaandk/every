@@ -40,13 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Builders\DayOfWeekBuilder.cs" />
-    <Compile Include="Builders\DaysBuilder.cs" />
+    <Compile Include="Builders\AtBuilder.cs" />
+    <Compile Include="Builders\DaysOfWeekBuilder.cs" />
+    <Compile Include="Builders\NthDayOfWeekBuilder.cs" />
     <Compile Include="Builders\PluralBuilder.cs" />
     <Compile Include="Builders\SingularBuilder.cs" />
     <Compile Include="Contracts\IJobManager.cs" />
     <Compile Include="Ever.cs" />
     <Compile Include="Concrete\DefaultJobManager.cs" />
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Job.cs" />
     <Compile Include="Builders\JobBuilder.cs" />
     <Compile Include="JobManager.cs" />

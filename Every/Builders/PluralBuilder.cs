@@ -1,4 +1,4 @@
-﻿namespace Every
+﻿namespace Every.Builders
 {
     public class PluralBuilder
     {
@@ -40,13 +40,13 @@
             }
         }
 
-        public DaysBuilder Days
+        public AtBuilder Days
         {
             get
             {
                 Parameters.CalculateNext = (job) => job.Next.AddDays(Parameters.N);
 
-                return new DaysBuilder(Parameters);
+                return new AtBuilder(Parameters);
             }
         }
     }

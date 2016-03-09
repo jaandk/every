@@ -1,20 +1,19 @@
 ﻿using System;
 
-namespace Every
+namespace Every.Builders
 {
-    public class DaysBuilder : JobBuilder
+    public class AtBuilder : JobBuilder
     {
-        internal DaysBuilder(JobParameters jobParams)
+        internal AtBuilder(JobParameters jobParams)
             : base(jobParams)
         {
         }
-
 
         public JobBuilder At(TimeSpan at)
         {
             var next = Parameters.Next;
             Parameters.Next = new DateTime(next.Year, next.Month, next.Day, at.Hours, at.Minutes, at.Seconds, at.Milliseconds);
-                
+
             return new JobBuilder(Parameters);
         }
 

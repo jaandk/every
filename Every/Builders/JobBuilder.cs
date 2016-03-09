@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Every
+namespace Every.Builders
 {
     public class JobBuilder
     {
