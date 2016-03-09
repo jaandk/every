@@ -15,17 +15,32 @@ namespace Every
 
         public static SingularBuilder ry()
         {
-            return new SingularBuilder();
+            var configuration = new JobConfiguration(JobType.FixedInterval)
+            {
+                N = 1
+            };
+
+            return new SingularBuilder(configuration);
         }
 
         public static PluralBuilder ry(int n)
         {
-            return new PluralBuilder(n);
+            var configuration = new JobConfiguration(JobType.FixedInterval)
+            {
+                N = n
+            };
+
+            return new PluralBuilder(configuration);
         }
 
         public static DayOfWeekBuilder ry(params DayOfWeek[] daysOfWeek)
         {
-            return new DayOfWeekBuilder(daysOfWeek);
+            var configuration = new JobConfiguration(JobType.Other)
+            {
+                DaysOfWeek = daysOfWeek
+            };
+
+            return new DayOfWeekBuilder(configuration);
         }
     }
 }

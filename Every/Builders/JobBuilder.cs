@@ -4,25 +4,38 @@ namespace Every
 {
     public class JobBuilder
     {
-        protected long IntervalInSeconds { get; set; }
-        protected long Delay { get; set; }
+        protected internal JobConfiguration Configuration { get; set; }
 
-
-        internal JobBuilder(long intervalInSeconds, long delay = 0)
+        internal JobBuilder(JobConfiguration configuration)
         {
-            IntervalInSeconds = intervalInSeconds;
-            Delay = delay;
+            Configuration = configuration;
         }
+
 
         public Job Do(Action<Job> job)
         {
             if (!Eve.Jobs.ContainsKey(job))
-                Eve.Jobs[job] = new Job(job);
+                Eve.Jobs[job] = CreateJob(job);
 
-            var jobContainer = Eve.Jobs[job];
-            jobContainer.AddTimer(IntervalInSeconds, Delay);
+            return Eve.Jobs[job];
+        }
 
-            return jobContainer;
+
+        private Job CreateJob(Action<Job> job)
+        {
+            switch (Configuration.JobType)
+            {
+                case JobType.FixedInterval:
+                    return CreateFixedIntervalJob(job);
+
+                default:
+                    return null;
+            }
+        }
+
+        private FixedIntervalJob CreateFixedIntervalJob(Action<Job> job)
+        {
+            return new FixedIntervalJob(job);
         }
     }
 }

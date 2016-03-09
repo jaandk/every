@@ -2,29 +2,40 @@
 {
     public class SingularBuilder
     {
-        internal SingularBuilder()
+        protected internal JobConfiguration Configuration { get; set; }
+
+        internal SingularBuilder(JobConfiguration jobConfiguration)
         {
+            Configuration = jobConfiguration;
         }
 
 
         public JobBuilder Second()
         {
-            return new JobBuilder(1);
+            Configuration.IntervalInSeconds = 1;
+
+            return new JobBuilder(Configuration);
         }
 
         public JobBuilder Minute()
         {
-            return new JobBuilder(60);
+            Configuration.IntervalInSeconds = 60;
+
+            return new JobBuilder(Configuration);
         }
 
         public JobBuilder Hour()
         {
-            return new JobBuilder(60 * 60);
+            Configuration.IntervalInSeconds = 60 * 60;
+
+            return new JobBuilder(Configuration);
         }
 
         public DaysBuilder Day()
         {
-            return new DaysBuilder(60 * 60 * 24);
+            Configuration.IntervalInSeconds = 60 * 60 * 24;
+
+            return new DaysBuilder(Configuration);
         }
     }
 }

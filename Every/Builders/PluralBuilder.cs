@@ -2,32 +2,40 @@
 {
     public class PluralBuilder
     {
-        private long _n;
+        protected internal JobConfiguration Configuration { get; set; }
 
-        internal PluralBuilder(long n)
+        internal PluralBuilder(JobConfiguration configuration)
         {
-            _n = n;
+            Configuration = configuration;
         }
 
 
         public JobBuilder Seconds()
         {
-            return new JobBuilder(_n);
+            Configuration.IntervalInSeconds = Configuration.N;
+
+            return new JobBuilder(Configuration);
         }
 
         public JobBuilder Minutes()
         {
-            return new JobBuilder(_n * 60);
+            Configuration.IntervalInSeconds = Configuration.N * 60;
+
+            return new JobBuilder(Configuration);
         }
 
         public JobBuilder Hours()
         {
-            return new JobBuilder(_n * 60 * 60);
+            Configuration.IntervalInSeconds = Configuration.N * 60 * 60;
+
+            return new JobBuilder(Configuration);
         }
 
         public DaysBuilder Days()
         {
-            return new DaysBuilder(_n * 60 * 60 * 24);
+            Configuration.IntervalInSeconds = Configuration.N * 60 * 60 * 24;
+
+            return new DaysBuilder(Configuration);
         }
     }
 }

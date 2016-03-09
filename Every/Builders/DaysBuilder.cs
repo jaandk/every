@@ -4,8 +4,8 @@ namespace Every
 {
     public class DaysBuilder : JobBuilder
     {
-        internal DaysBuilder(long intervalInSeconds, long delay = 0)
-            : base(intervalInSeconds, delay)
+        internal DaysBuilder(JobConfiguration configuration)
+            : base(configuration)
         {
         }
 
@@ -15,11 +15,11 @@ namespace Every
             var now = DateTime.Now.TimeOfDay;
 
             if (now > at)
-                Delay = (long)(new TimeSpan(24, 0, 0).TotalMilliseconds - (now - at).TotalMilliseconds);
+                Configuration.Delay = (long)(new TimeSpan(24, 0, 0).TotalMilliseconds - (now - at).TotalMilliseconds);
             else
-                Delay = (long)((at - now).TotalMilliseconds);
+                Configuration.Delay = (long)((at - now).TotalMilliseconds);
 
-            return new JobBuilder(IntervalInSeconds, Delay);
+            return new JobBuilder(Configuration);
         }
 
         public JobBuilder At(int hours, int minutes, int seconds = 0)

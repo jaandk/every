@@ -7,9 +7,9 @@ namespace Every
     public class Job
     {
         internal Action<Job> JobAction { get; set; }
-        internal List<Timer> Timers { get; private set; }
+        protected internal List<Timer> Timers { get; private set; }
 
-        public Job(Action<Job> job)
+        internal Job(Action<Job> job)
         {
             JobAction = job;
             Timers = new List<Timer>();
@@ -27,10 +27,9 @@ namespace Every
             }
         }
 
-
-        internal void AddTimer(long intervalInSeconds, long delay = 0)
+        protected virtual void AddTimer(Action<Job> job, JobConfiguration configuration)
         {
-            Timers.Add(new Timer((e) => JobAction(this), null, delay, intervalInSeconds * 1000));
+            throw new NotImplementedException("Developer is an idiot");
         }
     }
 }

@@ -42,10 +42,13 @@
   <ItemGroup>
     <Compile Include="Builders\DayOfWeekBuilder.cs" />
     <Compile Include="Builders\DaysBuilder.cs" />
+    <Compile Include="Builders\JobConfiguration.cs" />
+    <Compile Include="Builders\JobType.cs" />
     <Compile Include="Builders\PluralBuilder.cs" />
     <Compile Include="Builders\SingularBuilder.cs" />
     <Compile Include="Eve.cs" />
-    <Compile Include="Job.cs" />
+    <Compile Include="Jobs\FixedIntervalJob.cs" />
+    <Compile Include="Jobs\Job.cs" />
     <Compile Include="Builders\JobBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
