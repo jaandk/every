@@ -33,7 +33,7 @@ namespace Every
         /// </summary>
         public void Cancel()
         {
-            JobManager.Instance.Jobs.Remove(this);
+            JobManager.Current.Jobs.Remove(this);
         }
     }
 

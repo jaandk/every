@@ -5,13 +5,13 @@ namespace Every
     /// <summary>
     /// Base class for creating jobs.
     /// </summary>
-    public static class Eve
+    public static class Ever
     {
         /// <summary>
         /// Creates a singular job (every second, every minute, ...).
         /// </summary>
         /// <returns></returns>
-        public static SingularBuilder ry()
+        public static SingularBuilder y()
         {
             return new SingularBuilder(new JobParameters());
         }
@@ -21,7 +21,7 @@ namespace Every
         /// </summary>
         /// <param name="n">The amount of units (seconds, minutes, ...).</param>
         /// <returns></returns>
-        public static PluralBuilder ry(int n)
+        public static PluralBuilder y(int n)
         {
             return new PluralBuilder(new JobParameters(n));
         }
@@ -31,7 +31,7 @@ namespace Every
         /// </summary>
         /// <param name="daysOfWeek">The day(s) of the week.</param>
         /// <returns></returns>
-        public static DayOfWeekBuilder ry(params DayOfWeek[] daysOfWeek)
+        public static DayOfWeekBuilder y(params DayOfWeek[] daysOfWeek)
         {
             return new DayOfWeekBuilder(new JobParameters(daysOfWeek));
         }

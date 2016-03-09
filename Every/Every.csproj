@@ -44,10 +44,12 @@
     <Compile Include="Builders\DaysBuilder.cs" />
     <Compile Include="Builders\PluralBuilder.cs" />
     <Compile Include="Builders\SingularBuilder.cs" />
-    <Compile Include="Eve.cs" />
-    <Compile Include="JobManager.cs" />
+    <Compile Include="Contracts\IJobManager.cs" />
+    <Compile Include="Ever.cs" />
+    <Compile Include="DefaultJobManager.cs" />
     <Compile Include="Job.cs" />
     <Compile Include="Builders\JobBuilder.cs" />
+    <Compile Include="JobManager.cs" />
     <Compile Include="JobParameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

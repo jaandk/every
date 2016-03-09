@@ -11,6 +11,9 @@ namespace Tester
             Action task = () => Console.WriteLine($"Event happened at '{DateTime.Now}'");
 
 
+
+
+
             Thread.Sleep(Timeout.Infinite);
         }
     }

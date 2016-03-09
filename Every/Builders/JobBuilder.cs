@@ -16,7 +16,7 @@ namespace Every
         {
             var jobContainer = new Job(job, Parameters);
 
-            JobManager.Instance.Jobs.Add(jobContainer);
+            JobManager.Current.Jobs.Add(jobContainer);
             return jobContainer;
         }
 
@@ -29,7 +29,7 @@ namespace Every
         {
             var jobContainer = new Job<TMetadata>(job, Parameters, metadata);
 
-            JobManager.Instance.Jobs.Add(jobContainer);
+            JobManager.Current.Jobs.Add(jobContainer);
             return jobContainer;
         }
     }
