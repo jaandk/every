@@ -1,3 +1,3 @@
-# Eve.ry
+# Ever.y
 
-Eve.ry is a fluent API job scheduling engine for .NET.
+Ever.y is a fluent API job scheduling engine for .NET.
