@@ -13,7 +13,7 @@ namespace Every
 
         private Timer _timer;
 
-        public List<Job> Jobs { get; private set; }
+        public IList<Job> Jobs { get; private set; }
 
         private JobManager()
         {
@@ -22,13 +22,18 @@ namespace Every
             Start();
         }
 
-
+        /// <summary>
+        /// Starts the job scheduler.
+        /// </summary>
         public void Start()
         {
             if (_timer == null)
                 _timer = new Timer(OnTimerElapsed, null, 0, 250);
         }
 
+        /// <summary>
+        /// Stops the job scheduler.
+        /// </summary>
         public void Stop()
         {
             _timer?.Dispose();

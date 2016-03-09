@@ -4,23 +4,25 @@ namespace Every
 {
     public class DayOfWeekBuilder : JobBuilder
     {
-        private DayOfWeek[] _daysOfWeek;
-
-        internal DayOfWeekBuilder(Job job, DayOfWeek[] daysOfWeek)
-            : base(job)
+        internal DayOfWeekBuilder(JobParameters jobParams)
+            : base(jobParams)
         {
-            _daysOfWeek = daysOfWeek;
+            while (Parameters.Next.DayOfWeek != DateTime.Now.DayOfWeek)
+                Parameters.Next = Parameters.Next.AddDays(1);
         }
 
 
         public JobBuilder At(TimeSpan at)
         {
-            throw new NotImplementedException();
+            var next = Parameters.Next;
+            Parameters.Next = new DateTime(next.Year, next.Month, next.Day, at.Hours, at.Minutes, at.Seconds, at.Milliseconds);
+
+            return new JobBuilder(Parameters);
         }
 
-        public JobBuilder At(int hours, int minutes, int seconds = 0)
+        public JobBuilder At(int hours, int minutes, int seconds = 0, int milliseconds = 0)
         {
-            return At(new TimeSpan(hours, minutes, seconds));
+            return At(new TimeSpan(0, hours, minutes, seconds, milliseconds));
         }
     }
 }

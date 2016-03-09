@@ -4,25 +4,33 @@ namespace Every
 {
     public class JobBuilder
     {
-        protected internal Job Job { get; set; }
+        internal JobParameters Parameters { get; set; }
 
-        internal JobBuilder(Job job)
+        internal JobBuilder(JobParameters jobParams)
         {
-            Job = job;
+            Parameters = jobParams;
         }
 
 
         public Job Do(Action<Job> job)
         {
-            Job.Action = job;
+            var jobContainer = new Job(job, Parameters);
 
-            JobManager.Instance.Jobs.Add(Job);
-            return Job;
+            JobManager.Instance.Jobs.Add(jobContainer);
+            return jobContainer;
         }
 
         public Job Do(Action job)
         {
             return Do(_ => job());
+        }
+
+        public Job<TMetadata> Do<TMetadata>(Action<Job<TMetadata>> job, TMetadata metadata)
+        {
+            var jobContainer = new Job<TMetadata>(job, Parameters, metadata);
+
+            JobManager.Instance.Jobs.Add(jobContainer);
+            return jobContainer;
         }
     }
 }
