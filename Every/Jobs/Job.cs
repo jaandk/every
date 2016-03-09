@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Threading;
 
 namespace Every
 {
-    public class Job
+    public abstract class Job
     {
-        internal Action<Job> JobAction { get; set; }
-        internal JobConfiguration Configuration { get; set; }
+        protected internal Action<Job> JobAction { get; set; }
+        protected internal JobConfiguration Configuration { get; set; }
 
-        internal Timer Timer { get; set; }
+        protected internal DateTime Next { get; set; }
 
         internal Job(Action<Job> job, JobConfiguration configuration)
         {
@@ -17,10 +16,6 @@ namespace Every
         }
 
 
-        public virtual void Cancel()
-        {
-            Timer?.Dispose();
-            Timer = null;
-        }
+        protected internal abstract void CalculateNextRun(DateTime now);
     }
 }

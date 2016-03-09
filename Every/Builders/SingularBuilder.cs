@@ -10,32 +10,44 @@
         }
 
 
-        public JobBuilder Second()
+        public JobBuilder Second
         {
-            Configuration.IntervalInSeconds = 1;
+            get
+            {
+                Configuration.IntervalInSeconds = 1;
 
-            return new JobBuilder(Configuration);
+                return new JobBuilder(Configuration);
+            }
         }
 
-        public JobBuilder Minute()
+        public JobBuilder Minute
         {
-            Configuration.IntervalInSeconds = 60;
+            get
+            {
+                Configuration.IntervalInSeconds = 60;
 
-            return new JobBuilder(Configuration);
+                return new JobBuilder(Configuration);
+            }
         }
 
-        public JobBuilder Hour()
+        public JobBuilder Hour
         {
-            Configuration.IntervalInSeconds = 60 * 60;
+            get
+            {
+                Configuration.IntervalInSeconds = 60 * 60;
 
-            return new JobBuilder(Configuration);
+                return new JobBuilder(Configuration);
+            }
         }
 
-        public DaysBuilder Day()
+        public DaysBuilder Day
         {
-            Configuration.IntervalInSeconds = 60 * 60 * 24;
+            get
+            {
+                Configuration.IntervalInSeconds = 60 * 60 * 24;
 
-            return new DaysBuilder(Configuration);
+                return new DaysBuilder(Configuration);
+            }
         }
     }
 }

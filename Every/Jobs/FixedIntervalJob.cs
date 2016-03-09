@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 
 namespace Every.Jobs
 {
@@ -8,7 +7,13 @@ namespace Every.Jobs
         internal FixedIntervalJob(Action<Job> job, JobConfiguration configuration)
             : base(job, configuration)
         {
-            Timer = new Timer((e) => job(this), null, configuration.Delay, configuration.IntervalInSeconds * 1000);
+            Next = DateTime.Now.AddMilliseconds(configuration.Delay);
+        }
+
+
+        protected internal override void CalculateNextRun(DateTime now)
+        {
+            Next = now.AddSeconds(Configuration.IntervalInSeconds);
         }
     }
 }

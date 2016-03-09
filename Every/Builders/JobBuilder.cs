@@ -15,16 +15,24 @@ namespace Every
 
         public Job Do(Action<Job> job)
         {
+            Job jobContainer = null;
+
             switch (Configuration.JobType)
             {
                 case JobType.FixedInterval:
-                    return CreateFixedIntervalJob(job);
+                    jobContainer = CreateFixedIntervalJob(job);
+                    break;
 
                 case JobType.DayOfWeek:
-                    return CreateDayOfWeekJob(job);
+                    jobContainer = CreateDayOfWeekJob(job);
+                    break;
             }
 
-            return null;
+            if (jobContainer == null)
+                throw new InvalidOperationException("Developer is an idiot");
+
+            JobManager.Instance.Jobs.Add(jobContainer);
+            return jobContainer;
         }
 
         public Job Do(Action job)

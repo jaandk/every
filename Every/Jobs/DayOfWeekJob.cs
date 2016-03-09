@@ -7,6 +7,13 @@ namespace Every.Jobs
         internal DayOfWeekJob(Action<Job> job, JobConfiguration configuration)
             : base(job, configuration)
         {
+            Next = DateTime.Now;
+        }
+
+
+        protected internal override void CalculateNextRun(DateTime now)
+        {
+            
         }
     }
 }
