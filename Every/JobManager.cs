@@ -1,5 +1,5 @@
-﻿using Every.Contracts;
-using Every.Concrete;
+﻿using Every.Concrete;
+using Every.Contracts;
 
 namespace Every
 {

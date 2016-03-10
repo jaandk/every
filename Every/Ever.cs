@@ -22,10 +22,10 @@ namespace Every
         /// </summary>
         /// <param name="n">The amount of units (seconds, minutes, ...).</param>
         /// <returns></returns>
-        public static PluralBuilder y(long n)
+        public static PluralBuilder y(int n)
         {
-            if (n < 2)
-                throw new ArgumentOutOfRangeException(nameof(n), "Cannot be less than 2.");
+            if (n < 1)
+                throw new ArgumentOutOfRangeException(nameof(n), "Cannot be less than 1.");
 
             return new PluralBuilder(new JobConfiguration(n));
         }
@@ -38,19 +38,6 @@ namespace Every
         public static DayOfWeekBuilder y(params DayOfWeek[] daysOfWeek)
         {
             return new DayOfWeekBuilder(new JobConfiguration(daysOfWeek));
-        }
-
-        /// <summary>
-        /// Creates a nth day-of-week job (every second monday, every first wednesday of the month, ...).
-        /// </summary>
-        /// <param name="nth">The interval between days.</param>
-        /// <param name="dayOfWeek">The day of the week.</param>
-        public static NthDayOfWeekBuilder y(int nth, DayOfWeek dayOfWeek)
-        {
-            if (nth < 1)
-                throw new ArgumentOutOfRangeException(nameof(nth), "Cannot be less than 2.");
-
-            return new NthDayOfWeekBuilder(new JobConfiguration(nth, dayOfWeek));
         }
     }
 }

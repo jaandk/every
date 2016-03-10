@@ -1,12 +1,14 @@
-﻿namespace Every.Builders
+﻿using System;
+
+namespace Every.Builders
 {
     public class SingularBuilder
     {
-        internal JobConfiguration Parameters { get; set; }
+        internal JobConfiguration Configuration { get; set; }
 
-        internal SingularBuilder(JobConfiguration jobParams)
+        internal SingularBuilder(JobConfiguration config)
         {
-            Parameters = jobParams;
+            Configuration = config;
         }
 
 
@@ -14,9 +16,9 @@
         {
             get
             {
-                Parameters.CalculateNext = job => job.Next.AddSeconds(1);
+                Configuration.CalculateNext = job => job.Next.AddSeconds(1);
 
-                return new JobBuilder(Parameters);
+                return new JobBuilder(Configuration);
             }
         }
 
@@ -24,9 +26,9 @@
         {
             get
             {
-                Parameters.CalculateNext = job => job.Next.AddMinutes(1);
+                Configuration.CalculateNext = job => job.Next.AddMinutes(1);
 
-                return new JobBuilder(Parameters);
+                return new JobBuilder(Configuration);
             }
         }
 
@@ -34,9 +36,9 @@
         {
             get
             {
-                Parameters.CalculateNext = job => job.Next.AddHours(1);
+                Configuration.CalculateNext = job => job.Next.AddHours(1);
 
-                return new JobBuilder(Parameters);
+                return new JobBuilder(Configuration);
             }
         }
 
@@ -44,9 +46,9 @@
         {
             get
             {
-                Parameters.CalculateNext = job => job.Next.AddDays(1);
+                Configuration.CalculateNext = job => job.Next.AddDays(1);
 
-                return new AtBuilder(Parameters);
+                return new AtBuilder(Configuration);
             }
         }
     }

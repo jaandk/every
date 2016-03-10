@@ -6,24 +6,21 @@ namespace Every
     public class Job
     {
         protected Func<Job, DateTime> CalculateNext { get; set; }
-        protected internal Action<Job> Action { get; set; }
-        protected internal JobConfiguration Parameters { get; set; }
+        protected Action<Job> Action { get; set; }
 
         /// <summary>
         /// Gets next time that this job will be executed at.
         /// </summary>
         public DateTime Next { get; protected set; }
 
-        internal Job(JobConfiguration jobParams)
+        internal Job(JobConfiguration config)
         {
-            Parameters = jobParams;
-
-            CalculateNext = jobParams.CalculateNext;
-            Next = jobParams.Next;
+            CalculateNext = config.CalculateNext;
+            Next = config.First;
         }
 
-        internal Job(Action<Job> action, JobConfiguration jobParams)
-            : this(jobParams)
+        internal Job(Action<Job> action, JobConfiguration config)
+            : this(config)
         {
             Action = action;
         }
@@ -53,12 +50,12 @@ namespace Every
         /// </summary>
         public TMetadata Metadata { get; set; }
 
-        internal Job(Action<Job<TMetadata>> action, JobConfiguration jobParams, TMetadata metadata)
-            : base(jobParams)
+        internal Job(Action<Job<TMetadata>> action, JobConfiguration config, TMetadata metadata)
+            : base(config)
         {
-            Action = job => action(this);
-
             Metadata = metadata;
+
+            Action = job => action(this);
         }
     }
 }

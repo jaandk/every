@@ -4,17 +4,17 @@ namespace Every.Builders
 {
     public class JobBuilder
     {
-        internal JobConfiguration Parameters { get; set; }
+        internal JobConfiguration Configuration { get; set; }
 
-        internal JobBuilder(JobConfiguration jobParams)
+        internal JobBuilder(JobConfiguration config)
         {
-            Parameters = jobParams;
+            Configuration = config;
         }
 
 
         public Job Do(Action<Job> job)
         {
-            var jobContainer = new Job(job, Parameters);
+            var jobContainer = new Job(job, Configuration);
 
             JobManager.Current.Jobs.Add(jobContainer);
             return jobContainer;
@@ -27,7 +27,7 @@ namespace Every.Builders
 
         public Job<TMetadata> Do<TMetadata>(Action<Job<TMetadata>> job, TMetadata metadata)
         {
-            var jobContainer = new Job<TMetadata>(job, Parameters, metadata);
+            var jobContainer = new Job<TMetadata>(job, Configuration, metadata);
 
             JobManager.Current.Jobs.Add(jobContainer);
             return jobContainer;

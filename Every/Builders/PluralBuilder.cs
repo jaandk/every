@@ -1,12 +1,15 @@
-﻿namespace Every.Builders
+﻿using System;
+using System.Linq;
+
+namespace Every.Builders
 {
     public class PluralBuilder
     {
-        internal JobConfiguration Parameters { get; set; }
+        internal JobConfiguration Configuration { get; set; }
 
-        internal PluralBuilder(JobConfiguration jobParams)
+        internal PluralBuilder(JobConfiguration config)
         {
-            Parameters = jobParams;
+            Configuration = config;
         }
 
 
@@ -14,9 +17,9 @@
         {
             get
             {
-                Parameters.CalculateNext = job => job.Next.AddSeconds(Parameters.N);
+                Configuration.CalculateNext = job => job.Next.AddSeconds(Configuration.N);
 
-                return new JobBuilder(Parameters);
+                return new JobBuilder(Configuration);
             }
         }
 
@@ -24,9 +27,9 @@
         {
             get
             {
-                Parameters.CalculateNext = job => job.Next.AddMinutes(Parameters.N);
+                Configuration.CalculateNext = job => job.Next.AddMinutes(Configuration.N);
 
-                return new JobBuilder(Parameters);
+                return new JobBuilder(Configuration);
             }
         }
 
@@ -34,9 +37,9 @@
         {
             get
             {
-                Parameters.CalculateNext = job => job.Next.AddHours(Parameters.N);
+                Configuration.CalculateNext = job => job.Next.AddHours(Configuration.N);
 
-                return new JobBuilder(Parameters);
+                return new JobBuilder(Configuration);
             }
         }
 
@@ -44,10 +47,47 @@
         {
             get
             {
-                Parameters.CalculateNext = job => job.Next.AddDays(Parameters.N);
+                Configuration.CalculateNext = job => job.Next.AddDays(Configuration.N);
 
-                return new AtBuilder(Parameters);
+                return new AtBuilder(Configuration);
             }
+        }
+
+
+        public NthDayOfWeekBuilder st(DayOfWeek day)
+        {
+            if (Configuration.N % 10 != 1)
+                throw new ArgumentOutOfRangeException("n", "N should end in 1.");
+
+            Configuration.DayOfWeek = day;
+            return new NthDayOfWeekBuilder(Configuration);
+        }
+
+        public NthDayOfWeekBuilder nd(DayOfWeek day)
+        {
+            if (Configuration.N % 10 != 2)
+                throw new ArgumentOutOfRangeException("n", "N should end in 2.");
+
+            Configuration.DayOfWeek = day;
+            return new NthDayOfWeekBuilder(Configuration);
+        }
+
+        public NthDayOfWeekBuilder rd(DayOfWeek day)
+        {
+            if (Configuration.N % 10 != 3)
+                throw new ArgumentOutOfRangeException("n", "N should end in 3.");
+
+            Configuration.DayOfWeek = day;
+            return new NthDayOfWeekBuilder(Configuration);
+        }
+
+        public NthDayOfWeekBuilder th(DayOfWeek day)
+        {
+            if (Configuration.N % 10 < 4)
+                throw new ArgumentOutOfRangeException("n", "N should end in a number greater than or equal to 4.");
+
+            Configuration.DayOfWeek = day;
+            return new NthDayOfWeekBuilder(Configuration);
         }
     }
 }

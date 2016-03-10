@@ -9,29 +9,29 @@ namespace Every.Builders
         {
             get
             {
-                Parameters.CalculateNext = job => GetNthDayOfMonthForDate(job.Next.AddMonths(1), Parameters.Nth);
+                Configuration.CalculateNext = job => GetNthDayOfMonthForDate(job.Next.AddMonths(1));
 
-                return new AtBuilder(Parameters);
+                return new AtBuilder(Configuration);
             }
         }
 
-        internal NthDayOfWeekBuilder(JobConfiguration jobParams)
-            : base(jobParams)
+        internal NthDayOfWeekBuilder(JobConfiguration config)
+            : base(config)
         {
-            Parameters.Next = GetNthDayOfMonthForDate(Parameters.Next, Parameters.Nth);
+            Configuration.First = GetNthDayOfMonthForDate(Configuration.First);
 
-            Parameters.CalculateNext = job => job.Next.AddWeeks(Parameters.Nth);
+            Configuration.CalculateNext = job => job.Next.AddWeeks(Configuration.N);
         }
 
 
-        private DateTime GetNthDayOfMonthForDate(DateTime now, int nth)
+        private DateTime GetNthDayOfMonthForDate(DateTime now)
         {
             now = new DateTime(now.Year, now.Month, 1, now.Hour, now.Minute, now.Second).AddDays(-1);
 
-            while (now.DayOfWeek != Parameters.DayOfWeek)
+            while (now.DayOfWeek != Configuration.DayOfWeek)
                 now = now.AddDays(1);
 
-            return now.AddWeeks(Parameters.Nth - 1);
+            return now.AddWeeks(Configuration.N - 1);
         }
     }
 }

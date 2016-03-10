@@ -4,23 +4,23 @@ namespace Every.Builders
 {
     public class AtBuilder : JobBuilder
     {
-        internal AtBuilder(JobConfiguration jobParams)
-            : base(jobParams)
+        internal AtBuilder(JobConfiguration config)
+            : base(config)
         {
         }
 
 
         public JobBuilder At(TimeSpan at)
         {
-            var next = Parameters.Next;
-            Parameters.Next = new DateTime(next.Year, next.Month, next.Day, at.Hours, at.Minutes, at.Seconds, at.Milliseconds);
+            var first = Configuration.First;
+            Configuration.First = new DateTime(first.Year, first.Month, first.Day, at.Hours, at.Minutes, at.Seconds);
 
-            return new JobBuilder(Parameters);
+            return new JobBuilder(Configuration);
         }
 
-        public JobBuilder At(int hours, int minutes, int seconds = 0, int milliseconds = 0)
+        public JobBuilder At(int hours, int minutes, int seconds = 0)
         {
-            return At(new TimeSpan(0, hours, minutes, seconds, milliseconds));
+            return At(new TimeSpan(hours, minutes, seconds));
         }
     }
 }
