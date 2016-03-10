@@ -18,7 +18,7 @@ namespace Every
         }
 
         /// <summary>
-        /// Creates a plural job (every n seconds, every n minutes, ...).
+        /// Creates a plural job (every n seconds, every n minutes, ...) or an ordinal job (every 3rd Friday, ...).
         /// </summary>
         /// <param name="n">The amount of units (seconds, minutes, ...).</param>
         /// <returns></returns>

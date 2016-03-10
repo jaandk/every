@@ -57,7 +57,7 @@ namespace Every.Builders
         public NthDayOfWeekBuilder st(DayOfWeek day)
         {
             if (Configuration.N % 10 != 1)
-                throw new ArgumentOutOfRangeException("n", "N should end in 1.");
+                throw new ArgumentOutOfRangeException("n", $"One does not write '{Configuration.N}st'.");
 
             Configuration.DayOfWeek = day;
             return new NthDayOfWeekBuilder(Configuration);
@@ -66,7 +66,7 @@ namespace Every.Builders
         public NthDayOfWeekBuilder nd(DayOfWeek day)
         {
             if (Configuration.N % 10 != 2)
-                throw new ArgumentOutOfRangeException("n", "N should end in 2.");
+                throw new ArgumentOutOfRangeException("n", $"One does not write '{Configuration.N}nd'.");
 
             Configuration.DayOfWeek = day;
             return new NthDayOfWeekBuilder(Configuration);
@@ -75,7 +75,7 @@ namespace Every.Builders
         public NthDayOfWeekBuilder rd(DayOfWeek day)
         {
             if (Configuration.N % 10 != 3)
-                throw new ArgumentOutOfRangeException("n", "N should end in 3.");
+                throw new ArgumentOutOfRangeException("n", $"One does not write '{Configuration.N}rd'.");
 
             Configuration.DayOfWeek = day;
             return new NthDayOfWeekBuilder(Configuration);
@@ -84,7 +84,7 @@ namespace Every.Builders
         public NthDayOfWeekBuilder th(DayOfWeek day)
         {
             if (Configuration.N % 10 < 4)
-                throw new ArgumentOutOfRangeException("n", "N should end in a number greater than or equal to 4.");
+                throw new ArgumentOutOfRangeException("n", $"One does not write '{Configuration.N}th'.");
 
             Configuration.DayOfWeek = day;
             return new NthDayOfWeekBuilder(Configuration);
