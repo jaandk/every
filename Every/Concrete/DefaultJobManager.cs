@@ -11,7 +11,7 @@ namespace Every.Concrete
     {
         private Timer _timer;
 
-        public IList<Job> Jobs { get; private set; }
+        public ICollection<Job> Jobs { get; private set; }
 
         public DefaultJobManager()
         {

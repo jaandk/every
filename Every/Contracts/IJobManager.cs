@@ -7,7 +7,7 @@ namespace Every.Contracts
         /// <summary>
         /// Gets all jobs in the job manager.
         /// </summary>
-        IList<Job> Jobs { get; }
+        ICollection<Job> Jobs { get; }
 
         /// <summary>
         /// Starts the job scheduler.
