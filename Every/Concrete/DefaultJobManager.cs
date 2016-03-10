@@ -36,7 +36,7 @@ namespace Every.Concrete
 
         private void OnTimerElapsed(object state)
         {
-            var now = DateTime.Now;
+            var now = DateTimeOffset.Now;
 
             Parallel.ForEach(Jobs.Where(j => now >= j.Next), job => job.Execute());
         }

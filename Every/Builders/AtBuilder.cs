@@ -13,7 +13,7 @@ namespace Every.Builders
         public JobBuilder At(TimeSpan at)
         {
             var first = Configuration.First;
-            Configuration.First = new DateTime(first.Year, first.Month, first.Day, at.Hours, at.Minutes, at.Seconds);
+            Configuration.First = new DateTimeOffset(first.Year, first.Month, first.Day, at.Hours, at.Minutes, at.Seconds, first.Offset);
 
             return new JobBuilder(Configuration);
         }

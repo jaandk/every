@@ -4,6 +4,7 @@
         <id>Ever.y</id>
         <version>1.0.0</version>
         <authors>Michiel Lowijs</authors>
+        <projectUrl>https://github.com/mlowijs/every</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Ever.y is a fluent API job scheduling engine for .NET.</description>
         <copyright>Copyright (c) 2016, Michiel Lowijs</copyright>

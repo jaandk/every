@@ -9,14 +9,14 @@ namespace Every.Builders
         public DayOfWeek DayOfWeek { get; set; }
         public DayOfWeek[] DaysOfWeek { get; set; }
 
-        public DateTime First { get; set; }
-        public Func<Job, DateTime> CalculateNext { get; set; }
+        public DateTimeOffset First { get; set; }
+        public Func<Job, DateTimeOffset> CalculateNext { get; set; }
 
         internal JobConfiguration(int n = 1)
         {
             N = n;
 
-            First = DateTime.Now;
+            First = DateTimeOffset.Now;
         }
 
         internal JobConfiguration(DayOfWeek[] daysOfWeek)

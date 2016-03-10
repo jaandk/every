@@ -5,13 +5,13 @@ namespace Every
 {
     public class Job
     {
-        protected Func<Job, DateTime> CalculateNext { get; set; }
+        protected Func<Job, DateTimeOffset> CalculateNext { get; set; }
         protected Action<Job> Action { get; set; }
 
         /// <summary>
         /// Gets next time that this job will be executed at.
         /// </summary>
-        public DateTime Next { get; protected set; }
+        public DateTimeOffset Next { get; protected set; }
 
         internal Job(JobConfiguration config)
         {

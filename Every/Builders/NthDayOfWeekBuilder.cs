@@ -24,9 +24,9 @@ namespace Every.Builders
         }
 
 
-        private DateTime GetNthDayOfMonthForDate(DateTime now)
+        private DateTimeOffset GetNthDayOfMonthForDate(DateTimeOffset now)
         {
-            now = new DateTime(now.Year, now.Month, 1, now.Hour, now.Minute, now.Second).AddDays(-1);
+            now = new DateTimeOffset(now.Year, now.Month, 1, now.Hour, now.Minute, now.Second, now.Offset).AddDays(-1);
 
             while (now.DayOfWeek != Configuration.DayOfWeek)
                 now = now.AddDays(1);

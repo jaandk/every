@@ -56,7 +56,7 @@
     <Compile Include="Days\Wednes.cs" />
     <Compile Include="Ever.cs" />
     <Compile Include="Concrete\DefaultJobManager.cs" />
-    <Compile Include="Extensions\DateTimeExtensions.cs" />
+    <Compile Include="Extensions\DateTimeOffsetExtensions.cs" />
     <Compile Include="Job.cs" />
     <Compile Include="Builders\JobBuilder.cs" />
     <Compile Include="JobManager.cs" />
