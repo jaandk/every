@@ -18,3 +18,6 @@ var metadata = new MyClass { MyProp = "Hello World!" };
 
 Ever.y(Thurs.day).At(4, 00).Do(job, metadata); // Every Thursday at 04:00, do job
 ```
+
+## Credits
+Icon by [Freepik](http://www.flaticon.com/authors/freepik).
