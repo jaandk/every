@@ -10,12 +10,12 @@ namespace Every.Contracts
         ICollection<Job> Jobs { get; }
 
         /// <summary>
-        /// Starts the job scheduler.
+        /// Starts the job manager.
         /// </summary>
         void Start();
 
         /// <summary>
-        /// Stops the job scheduler.
+        /// Stops the job manager.
         /// </summary>
         void Stop();
     }

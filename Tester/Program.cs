@@ -12,8 +12,6 @@ namespace Tester
 
             Ever.y(67).nd(Mon.day).OfTheMonth.Do(task);
             Ever.y(Fri.day).Do(task);
-
-            Thread.Sleep(Timeout.Infinite);
         }
     }
 }
