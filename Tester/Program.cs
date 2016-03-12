@@ -10,9 +10,11 @@ namespace Tester
         {
             Action task = () => Console.WriteLine($"Event happened at '{DateTime.Now}'");
 
-            var job = Ever.y(3).rd(Mon.day).OfTheMonth.Do(task);
+            var job = Ever.y(3).rd(Mon.day).OfTheMonth.At(15, 00).In("Rotterdam");
 
-            Console.WriteLine(job.Next);
+            var job2 = Ever.y().Second.Do(task);
+
+            //Console.WriteLine(job.Next);
 
             Thread.Sleep(Timeout.Infinite);
         }

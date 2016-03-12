@@ -10,15 +10,15 @@ namespace Every.Builders
         }
 
 
-        public JobBuilder At(TimeSpan at)
+        public InBuilder At(TimeSpan at)
         {
             var first = Configuration.First;
             Configuration.First = new DateTimeOffset(first.Year, first.Month, first.Day, at.Hours, at.Minutes, at.Seconds, first.Offset);
 
-            return new JobBuilder(Configuration);
+            return new InBuilder(Configuration);
         }
 
-        public JobBuilder At(int hours, int minutes, int seconds = 0)
+        public InBuilder At(int hours, int minutes, int seconds = 0)
         {
             return At(new TimeSpan(hours, minutes, seconds));
         }
