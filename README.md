@@ -1,6 +1,7 @@
 # Ever.y
 
 Ever.y is a fluent API job scheduling engine for .NET.
+
 Please feel free to issue PRs or suggest improvements or new features.
 
 ## Examples
