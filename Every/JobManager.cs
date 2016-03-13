@@ -5,11 +5,11 @@ namespace Every
 {
     public static class JobManager
     {
-        public static IJobManager Current { get; set; }
-
-        static JobManager()
+        private static IJobManager _current;
+        public static IJobManager Current
         {
-            Current = new DefaultJobManager();
+            get { return _current ?? (_current = new DefaultJobManager()); }
+            set { _current = value; }
         }
     }
 }

@@ -37,9 +37,9 @@ namespace Every
 
         internal void Execute()
         {
-            Action(this);
-
             Next = CalculateNext(this);
+
+            Action(this);            
         }
     }
 
