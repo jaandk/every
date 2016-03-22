@@ -6,7 +6,11 @@ namespace Every
     public class Job
     {
         protected Func<Job, DateTimeOffset> CalculateNext { get; set; }
-        protected Action<Job> Action { get; set; }
+
+        /// <summary>
+        /// Gets or sets the action that this job executes.
+        /// </summary>
+        public Action<Job> Action { get; set; }
 
         /// <summary>
         /// Gets next time that this job will be executed at.
@@ -34,8 +38,10 @@ namespace Every
             JobManager.Current.Jobs.Remove(this);
         }
 
-
-        internal void Execute()
+        /// <summary>
+        /// Executes this job's action and sets the next moment to run.
+        /// </summary>
+        public void Execute()
         {
             Next = CalculateNext(this);
 

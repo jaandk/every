@@ -12,6 +12,8 @@ namespace Tester
 
             var job = Ever.y().Day.At(16, 00).In("Alaska").Do(task);
 
+            job.
+
             //Console.WriteLine(job.Next);
 
             Thread.Sleep(Timeout.Infinite);

@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
-    <metadata>
-        <id>Ever.y</id>
-        <version>1.0.0</version>
-        <authors>Michiel Lowijs</authors>
-        <projectUrl>https://github.com/mlowijs/every</projectUrl>
-        <iconUrl>https://raw.githubusercontent.com/mlowijs/every/master/icon.png</iconUrl>
-        <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>Ever.y is a fluent API job scheduling engine for .NET.</description>
-        <copyright>Copyright (c) 2016, Michiel Lowijs</copyright>
-        <tags>scheduler, jobs, tasks</tags>
-    </metadata>
-    <files>
-        <file src="bin\Release\Every.dll" target="lib\net452\Every.dll" />
-    </files>
+  <metadata>
+    <id>Ever.y</id>
+    <version>1.0.0</version>
+    <authors>Michiel Lowijs</authors>
+    <projectUrl>https://github.com/mlowijs/every</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/mlowijs/every/master/icon.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Ever.y is a fluent API job scheduling engine for .NET.</description>
+    <copyright>Copyright (c) 2016, Michiel Lowijs</copyright>
+    <tags>scheduler, jobs, tasks, timer</tags>
+  </metadata>
+  <files>
+    <file src="bin\Release\Every.dll" target="lib\net452\Every.dll" />
+  </files>
 </package>
