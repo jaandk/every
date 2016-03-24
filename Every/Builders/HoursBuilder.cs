@@ -20,7 +20,6 @@ namespace Every.Builders
             }
         }
 
-
         public MinutesPastBuilder At(int minutesPast)
         {
             AtInternal(minutesPast);
