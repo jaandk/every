@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Builders\AtBuilder.cs" />
     <Compile Include="Builders\DaysOfWeekBuilder.cs" />
+    <Compile Include="Builders\HourBuilder.cs" />
     <Compile Include="Builders\InBuilder.cs" />
     <Compile Include="Builders\NthDayOfWeekBuilder.cs" />
     <Compile Include="Builders\PluralBuilder.cs" />
