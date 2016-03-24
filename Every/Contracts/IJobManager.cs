@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Every.Contracts
 {
-    public interface IJobManager
+    public interface IJobManager : IDisposable
     {
         /// <summary>
         /// Gets all jobs in the job manager.

@@ -9,7 +9,11 @@ namespace Every
         public static IJobManager Current
         {
             get { return _current ?? (_current = new DefaultJobManager()); }
-            set { _current = value; }
+            set
+            {
+                _current?.Dispose();
+                _current = value;
+            }
         }
     }
 }

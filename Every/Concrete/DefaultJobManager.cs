@@ -20,6 +20,12 @@ namespace Every.Concrete
             Start();
         }
 
+        public void Dispose()
+        {
+            foreach (var job in Jobs.ToList())
+                job.Cancel();
+        }
+
 
         public void Start()
         {
