@@ -32,13 +32,13 @@ namespace Every.Builders
             }
         }
 
-        public JobBuilder Hours
+        public HoursBuilder Hours
         {
             get
             {
                 Configuration.CalculateNext = job => job.Next.AddHours(Configuration.N);
 
-                return new JobBuilder(Configuration);
+                return new HoursBuilder(Configuration);
             }
         }
 
