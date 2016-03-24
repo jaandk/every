@@ -45,6 +45,7 @@
     <Compile Include="Builders\DaysOfWeekBuilder.cs" />
     <Compile Include="Builders\HoursBuilder.cs" />
     <Compile Include="Builders\InBuilder.cs" />
+    <Compile Include="Builders\MinutesPastBuilder.cs" />
     <Compile Include="Builders\NthDayOfWeekBuilder.cs" />
     <Compile Include="Builders\PluralBuilder.cs" />
     <Compile Include="Builders\SingularBuilder.cs" />
