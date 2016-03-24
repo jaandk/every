@@ -1,12 +1,10 @@
 ﻿namespace Every.Builders
 {
-    public class MinutesPastBuilder
+    public class MinutesPastBuilder : BuilderBase
     {
-        internal JobConfiguration Configuration { get; set; }
-
-        internal MinutesPastBuilder(JobConfiguration configuration)
+        internal MinutesPastBuilder(JobConfiguration config)
+            : base(config)
         {
-            Configuration = configuration;
         }
 
 

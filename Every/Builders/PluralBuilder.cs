@@ -2,13 +2,11 @@
 
 namespace Every.Builders
 {
-    public class PluralBuilder
+    public class PluralBuilder : BuilderBase
     {
-        internal JobConfiguration Configuration { get; set; }
-
         internal PluralBuilder(JobConfiguration config)
+            : base(config)
         {
-            Configuration = config;
         }
 
 

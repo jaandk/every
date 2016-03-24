@@ -1,14 +1,10 @@
-﻿using System;
-
-namespace Every.Builders
+﻿namespace Every.Builders
 {
-    public class SingularBuilder
+    public class SingularBuilder : BuilderBase
     {
-        internal JobConfiguration Configuration { get; set; }
-
         internal SingularBuilder(JobConfiguration config)
+            : base(config)
         {
-            Configuration = config;
         }
 
 

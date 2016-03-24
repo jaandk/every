@@ -8,8 +8,6 @@ namespace Tester
     {
         static void Main(string[] args)
         {
-            var tmr = new Timer((o) => JobManager.Current = null, null, 5000, Timeout.Infinite);
-
             Action task = () => Console.WriteLine($"Event happened at '{DateTime.Now}'");
 
             var job = Ever.y().Second.Do(task);

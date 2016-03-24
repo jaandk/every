@@ -2,13 +2,11 @@
 
 namespace Every.Builders
 {
-    public class JobBuilder
+    public class JobBuilder : BuilderBase
     {
-        internal JobConfiguration Configuration { get; set; }
-
         internal JobBuilder(JobConfiguration config)
+            : base(config)
         {
-            Configuration = config;
         }
 
 
