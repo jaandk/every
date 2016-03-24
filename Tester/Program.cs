@@ -12,8 +12,6 @@ namespace Tester
 
             var job = Ever.y().Hour.At(20).MinutesPastTheHour.Do(task);
 
-            //Console.WriteLine(job.Next);
-
             Thread.Sleep(Timeout.Infinite);
         }
     }
