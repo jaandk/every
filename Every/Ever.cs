@@ -18,7 +18,7 @@ namespace Every
         }
 
         /// <summary>
-        /// Creates a plural job (every n seconds, every n minutes, ...) or an ordinal job (every 3rd Friday, ...).
+        /// Creates a plural job (every n seconds, every n minutes, ...) or an ordinal job (every nth Friday, ...).
         /// </summary>
         /// <param name="n">The amount of units (seconds, minutes, ...) or the ordinal number.</param>
         /// <returns></returns>
@@ -31,7 +31,7 @@ namespace Every
         }
 
         /// <summary>
-        /// Creates a day-of-week job (every monday, every friday and saturday, ...).
+        /// Creates a day-of-week job (every Monday, every Friday and Saturday, ...).
         /// </summary>
         /// <param name="daysOfWeek">The day(s) of the week.</param>
         /// <returns></returns>
