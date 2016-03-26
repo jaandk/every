@@ -18,7 +18,7 @@ namespace Every.Builders
         internal NthDayOfWeekBuilder(JobConfiguration config)
             : base(config)
         {
-            Configuration.First = GetNthDayOfMonthForDate(Configuration.First);
+            //Configuration.First = GetNthDayOfMonthForDate(Configuration.First);
 
             Configuration.CalculateNext = job => job.Next.AddWeeks(Configuration.N);
         }

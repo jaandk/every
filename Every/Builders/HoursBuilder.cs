@@ -31,7 +31,7 @@ namespace Every.Builders
         private void AtInternal(int minutesPast)
         {
             var first = Configuration.First;
-            Configuration.First = new DateTimeOffset(first.Year, first.Month, first.Day, first.Hour, minutesPast, 0, first.Offset).AddHours(1);
+            Configuration.First = new DateTimeOffset(first.Year, first.Month, first.Day, first.Hour, minutesPast, 0, first.Offset);
         }
     }
 }

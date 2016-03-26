@@ -10,7 +10,7 @@ namespace Tester
         {
             Action task = () => Console.WriteLine($"Event happened at '{DateTime.Now}'");
 
-            var job = Ever.y().Second.Do(task);
+            Ever.y().Hour.Do(task).Execute();
 
             Thread.Sleep(Timeout.Infinite);
         }

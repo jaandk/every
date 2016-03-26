@@ -21,6 +21,9 @@ namespace Every
         {
             CalculateNext = config.CalculateNext;
             Next = config.First;
+
+            if (Next < DateTimeOffset.Now)
+                Next = CalculateNext(this);
         }
 
         internal Job(Action<Job> action, JobConfiguration config)
@@ -43,7 +46,8 @@ namespace Every
         /// </summary>
         public void Execute()
         {
-            Next = CalculateNext(this);
+            if (Next < DateTimeOffset.Now)
+                Next = CalculateNext(this);
 
             Action(this);            
         }
