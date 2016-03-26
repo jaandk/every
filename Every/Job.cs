@@ -51,6 +51,12 @@ namespace Every
 
             Action(this);            
         }
+
+
+        public override string ToString()
+        {
+            return $"Job, Next = {Next:dddd d MMMM yyyy HH:mm:ss}";
+        }
     }
 
     public class Job<TMetadata> : Job

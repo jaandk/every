@@ -2,7 +2,7 @@
 
 namespace Every
 {
-    public static class BThurs
+    public static class Thurs
     {
         public static readonly DayOfWeek day = DayOfWeek.Thursday;
     }

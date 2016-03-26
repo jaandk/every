@@ -5,33 +5,30 @@ namespace Every.Builders
 {
     public class NthDayOfWeekBuilder : JobBuilder
     {
-        public AtBuilder OfTheMonth
-        {
-            get
-            {
-                Configuration.CalculateNext = job => GetNthDayOfMonthForDate(job.Next.AddMonths(1));
-
-                return new AtBuilder(Configuration);
-            }
-        }
-
         internal NthDayOfWeekBuilder(JobConfiguration config)
             : base(config)
         {
-            //Configuration.First = GetNthDayOfMonthForDate(Configuration.First);
-
             Configuration.CalculateNext = job => job.Next.AddWeeks(Configuration.N);
         }
 
 
-        private DateTimeOffset GetNthDayOfMonthForDate(DateTimeOffset now)
+        public AtBuilder OfTheMonth
         {
-            now = new DateTimeOffset(now.Year, now.Month, 1, now.Hour, now.Minute, now.Second, now.Offset).AddDays(-1);
+            get
+            {
+                Configuration.CalculateNext = job =>
+                {
+                    var next = job.Next.AddMonths(1);
+                    next = new DateTimeOffset(next.Year, next.Month, 1, next.Hour, next.Minute, next.Second, next.Offset);
 
-            while (now.DayOfWeek != Configuration.DayOfWeek)
-                now = now.AddDays(1);
+                    while (next.DayOfWeek != Configuration.DayOfWeek)
+                        next = next.AddDays(1);
 
-            return now.AddWeeks(Configuration.N - 1);
+                    return next.AddWeeks(Configuration.N - 1);
+                };
+
+                return new AtBuilder(Configuration);
+            }
         }
     }
 }
