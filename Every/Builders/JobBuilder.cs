@@ -18,10 +18,7 @@ namespace Every.Builders
             return jobContainer;
         }
 
-        public Job Do(Action job)
-        {
-            return Do(_ => job());
-        }
+        public Job Do(Action job) => Do(_ => job());
 
         public Job<TMetadata> Do<TMetadata>(Action<Job<TMetadata>> job, TMetadata metadata)
         {

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 
 namespace Every.Builders
 {
@@ -18,14 +17,6 @@ namespace Every.Builders
             return new JobBuilder(Configuration);
         }
 
-        public JobBuilder In(string cityName)
-        {
-            var timeZone = TimeZoneInfo.GetSystemTimeZones().Where(tz => tz.DisplayName.ToLower().Contains(cityName.ToLower())).FirstOrDefault();
-
-            if (timeZone == null)
-                throw new TimeZoneNotFoundException($"No time zone found for '{cityName}'.");
-
-            return In(timeZone.BaseUtcOffset);
-        }
+        public JobBuilder In(int hours, int minutes) => In(new TimeSpan(hours, minutes, 0));
     }
 }

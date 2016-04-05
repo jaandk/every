@@ -8,23 +8,23 @@
         }
 
 
-        public JobBuilder Second
+        public FromBuilder Second
         {
             get
             {
                 Configuration.CalculateNext = job => job.Next.AddSeconds(1);
 
-                return new JobBuilder(Configuration);
+                return new FromBuilder(Configuration);
             }
         }
 
-        public JobBuilder Minute
+        public FromBuilder Minute
         {
             get
             {
                 Configuration.CalculateNext = job => job.Next.AddMinutes(1);
 
-                return new JobBuilder(Configuration);
+                return new FromBuilder(Configuration);
             }
         }
 

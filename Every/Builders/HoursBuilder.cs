@@ -2,7 +2,7 @@
 
 namespace Every.Builders
 {
-    public class HoursBuilder : JobBuilder
+    public class HoursBuilder : FromBuilder
     {
         internal HoursBuilder(JobConfiguration config)
             : base(config)

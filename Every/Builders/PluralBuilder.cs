@@ -11,13 +11,13 @@ namespace Every.Builders
         }
 
 
-        public JobBuilder Seconds
+        public FromBuilder Seconds
         {
             get
             {
                 Configuration.CalculateNext = job => job.Next.AddSeconds(Configuration.N);
 
-                return new JobBuilder(Configuration);
+                return new FromBuilder(Configuration);
             }
         }
 
@@ -27,7 +27,7 @@ namespace Every.Builders
             {
                 Configuration.CalculateNext = job => job.Next.AddMinutes(Configuration.N);
 
-                return new JobBuilder(Configuration);
+                return new FromBuilder(Configuration);
             }
         }
 

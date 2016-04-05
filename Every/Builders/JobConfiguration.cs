@@ -9,6 +9,9 @@ namespace Every.Builders
         public DayOfWeek DayOfWeek { get; set; }
         public DayOfWeek[] DaysOfWeek { get; set; }
 
+        public TimeSpan From { get; set; }
+        public TimeSpan To { get; set; }
+
         public DateTimeOffset First { get; set; }
         public Func<Job, DateTimeOffset> CalculateNext { get; set; }
 

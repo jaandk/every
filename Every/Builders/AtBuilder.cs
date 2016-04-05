@@ -18,9 +18,6 @@ namespace Every.Builders
             return new InBuilder(Configuration);
         }
 
-        public InBuilder At(TimeSpan at)
-        {
-            return At(new TimeSpan(at.Hours, at.Minutes, at.Seconds));
-        }
+        public InBuilder At(TimeSpan at) => At(at.Hours, at.Minutes, at.Seconds);
     }
 }
