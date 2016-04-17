@@ -58,7 +58,7 @@
     <Compile Include="Days\Satur.cs" />
     <Compile Include="Days\Sun.cs" />
     <Compile Include="Days\Thurs.cs" />
-    <Compile Include="Days\Tue.cs" />
+    <Compile Include="Days\Tues.cs" />
     <Compile Include="Days\Wednes.cs" />
     <Compile Include="Ever.cs" />
     <Compile Include="Concrete\DefaultJobManager.cs" />

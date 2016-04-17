@@ -47,5 +47,13 @@
                 return new AtBuilder(Configuration);
             }
         }
+
+        public DayOfWeekBuilder Weekday
+        {
+            get
+            {
+                return new DayOfWeekBuilder(new JobConfiguration(new[] { Mon.day, Tues.day, Wednes.day, Thurs.day, Fri.day }));
+            }
+        }
     }
 }
