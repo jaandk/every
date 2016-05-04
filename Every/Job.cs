@@ -5,7 +5,7 @@ namespace Every
 {
     public class Job
     {
-        protected Func<Job, DateTimeOffset> CalculateNext { get; set; }
+        protected Func<DateTimeOffset, DateTimeOffset> CalculateNext { get; set; }
 
         /// <summary>
         /// Gets or sets the action that this job executes.
@@ -22,12 +22,13 @@ namespace Every
 
         protected Job(JobConfiguration config)
         {
-            CalculateNext = config.CalculateNext;
             Next = config.First;
+            CalculateNext = config.CalculateNext;
+            
             RunSimultaneously = config.RunSimultaneously;
 
             if (Next < DateTimeOffset.Now)
-                Next = CalculateNext(this);
+                Next = CalculateNext(Next);
         }
 
         internal Job(JobConfiguration config, Action<Job> action)
@@ -52,10 +53,13 @@ namespace Every
         {
             IsRunning = true;
 
-            if (Next < DateTimeOffset.Now)
-                Next = CalculateNext(this);
+            if (RunSimultaneously && Next < DateTimeOffset.Now)
+                Next = CalculateNext(Next);
 
             Action(this);
+
+            if (!RunSimultaneously && Next < DateTimeOffset.Now)
+                Next = CalculateNext(DateTimeOffset.Now);
 
             IsRunning = false;        
         }

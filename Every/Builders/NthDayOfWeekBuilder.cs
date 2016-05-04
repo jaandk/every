@@ -8,7 +8,7 @@ namespace Every.Builders
         internal NthDayOfWeekBuilder(JobConfiguration config)
             : base(config)
         {
-            Configuration.CalculateNext = job => job.Next.AddWeeks(Configuration.N);
+            Configuration.CalculateNext = next => next.AddWeeks(Configuration.N);
         }
 
 
@@ -16,9 +16,9 @@ namespace Every.Builders
         {
             get
             {
-                Configuration.CalculateNext = job =>
+                Configuration.CalculateNext = next =>
                 {
-                    var next = job.Next.AddMonths(1);
+                    next = next.AddMonths(1);
                     next = new DateTimeOffset(next.Year, next.Month, 1, next.Hour, next.Minute, next.Second, next.Offset);
 
                     while (next.DayOfWeek != Configuration.DayOfWeek)

@@ -12,7 +12,7 @@
         {
             get
             {
-                Configuration.CalculateNext = job => job.Next.AddSeconds(1);
+                Configuration.CalculateNext = next => next.AddSeconds(1);
 
                 return new FromBuilder(Configuration);
             }
@@ -22,7 +22,7 @@
         {
             get
             {
-                Configuration.CalculateNext = job => job.Next.AddMinutes(1);
+                Configuration.CalculateNext = next => next.AddMinutes(1);
 
                 return new FromBuilder(Configuration);
             }
@@ -32,7 +32,7 @@
         {
             get
             {
-                Configuration.CalculateNext = job => job.Next.AddHours(1);
+                Configuration.CalculateNext = next => next.AddHours(1);
 
                 return new HoursBuilder(Configuration);
             }
@@ -42,7 +42,7 @@
         {
             get
             {
-                Configuration.CalculateNext = job => job.Next.AddDays(1);
+                Configuration.CalculateNext = next => next.AddDays(1);
 
                 return new AtBuilder(Configuration);
             }

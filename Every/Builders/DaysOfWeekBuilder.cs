@@ -7,10 +7,8 @@ namespace Every.Builders
         internal DayOfWeekBuilder(JobConfiguration config)
             : base(config)
         {
-            Configuration.CalculateNext = job =>
+            Configuration.CalculateNext = next =>
             {
-                var next = job.Next;
-
                 do
                     next = next.AddDays(1);
                 while (!Configuration.DaysOfWeek.Contains(next.DayOfWeek));

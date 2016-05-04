@@ -15,7 +15,7 @@ namespace Every.Builders
         {
             get
             {
-                Configuration.CalculateNext = job => job.Next.AddSeconds(Configuration.N);
+                Configuration.CalculateNext = next => next.AddSeconds(Configuration.N);
 
                 return new FromBuilder(Configuration);
             }
@@ -25,7 +25,7 @@ namespace Every.Builders
         {
             get
             {
-                Configuration.CalculateNext = job => job.Next.AddMinutes(Configuration.N);
+                Configuration.CalculateNext = next => next.AddMinutes(Configuration.N);
 
                 return new FromBuilder(Configuration);
             }
@@ -35,7 +35,7 @@ namespace Every.Builders
         {
             get
             {
-                Configuration.CalculateNext = job => job.Next.AddHours(Configuration.N);
+                Configuration.CalculateNext = next => next.AddHours(Configuration.N);
 
                 return new HoursBuilder(Configuration);
             }
@@ -45,7 +45,7 @@ namespace Every.Builders
         {
             get
             {
-                Configuration.CalculateNext = job => job.Next.AddDays(Configuration.N);
+                Configuration.CalculateNext = next => next.AddDays(Configuration.N);
 
                 return new AtBuilder(Configuration);
             }

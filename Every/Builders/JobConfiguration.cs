@@ -13,7 +13,7 @@ namespace Every.Builders
         public TimeSpan To { get; set; }
 
         public DateTimeOffset First { get; set; }
-        public Func<Job, DateTimeOffset> CalculateNext { get; set; }
+        public Func<DateTimeOffset, DateTimeOffset> CalculateNext { get; set; }
 
         public bool RunSimultaneously { get; set; }
 
