@@ -9,9 +9,11 @@ namespace Every.Concrete
 {
     public class DefaultJobManager : IJobManager 
     {
+        private const int TimerResolution = 250;
+
         private Timer _timer;
 
-        public ICollection<Job> Jobs { get; private set; }
+        public ICollection<Job> Jobs { get; }
 
         public DefaultJobManager()
         {
@@ -44,7 +46,7 @@ namespace Every.Concrete
         {
             var now = DateTimeOffset.Now;
 
-            Parallel.ForEach(Jobs.Where(j => now >= j.Next), job => job.Execute());
+            Parallel.ForEach(Jobs.Where(j => now >= j.Next && (j.RunSimultaneously || !j.IsRunning)), job => job.Execute());
         }
     }
 }

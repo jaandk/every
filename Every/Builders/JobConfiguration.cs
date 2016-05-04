@@ -15,6 +15,8 @@ namespace Every.Builders
         public DateTimeOffset First { get; set; }
         public Func<Job, DateTimeOffset> CalculateNext { get; set; }
 
+        public bool RunSimultaneously { get; set; }
+
         internal JobConfiguration(int n = 1)
         {
             N = n;

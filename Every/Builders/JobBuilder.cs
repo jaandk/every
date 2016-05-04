@@ -10,19 +10,23 @@ namespace Every.Builders
         }
 
 
-        public Job Do(Action<Job> job)
+        public Job Do(Action<Job> job, bool runSimultaneously = true)
         {
-            var jobContainer = new Job(job, Configuration);
+            Configuration.RunSimultaneously = runSimultaneously;
+
+            var jobContainer = new Job(Configuration, job);
 
             JobManager.Current.Jobs.Add(jobContainer);
             return jobContainer;
         }
 
-        public Job Do(Action job) => Do(_ => job());
+        public Job Do(Action job, bool runSimultaneously = true) => Do(_ => job(), runSimultaneously);
 
-        public Job<TMetadata> Do<TMetadata>(Action<Job<TMetadata>> job, TMetadata metadata)
+        public Job<TMetadata> Do<TMetadata>(Action<Job<TMetadata>> job, TMetadata metadata, bool runSimultaneously = true)
         {
-            var jobContainer = new Job<TMetadata>(job, Configuration, metadata);
+            Configuration.RunSimultaneously = runSimultaneously;
+
+            var jobContainer = new Job<TMetadata>(Configuration, job, metadata);
 
             JobManager.Current.Jobs.Add(jobContainer);
             return jobContainer;

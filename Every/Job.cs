@@ -17,16 +17,20 @@ namespace Every
         /// </summary>
         public DateTimeOffset Next { get; protected set; }
 
-        internal Job(JobConfiguration config)
+        public bool IsRunning { get; protected set; }
+        public bool RunSimultaneously { get; protected set; }
+
+        protected Job(JobConfiguration config)
         {
             CalculateNext = config.CalculateNext;
             Next = config.First;
+            RunSimultaneously = config.RunSimultaneously;
 
             if (Next < DateTimeOffset.Now)
                 Next = CalculateNext(this);
         }
 
-        internal Job(Action<Job> action, JobConfiguration config)
+        internal Job(JobConfiguration config, Action<Job> action)
             : this(config)
         {
             Action = action;
@@ -34,7 +38,7 @@ namespace Every
 
 
         /// <summary>
-        /// Removes this job from the scheduler.
+        /// Removes this job from the job manager.
         /// </summary>
         public void Cancel()
         {
@@ -46,16 +50,20 @@ namespace Every
         /// </summary>
         public void Execute()
         {
+            IsRunning = true;
+
             if (Next < DateTimeOffset.Now)
                 Next = CalculateNext(this);
 
-            Action(this);            
+            Action(this);
+
+            IsRunning = false;        
         }
 
 
         public override string ToString()
         {
-            return $"Job, Next = {Next:dddd d MMMM yyyy HH:mm:ss}";
+            return $"Job, Next = {Next:dddd d MMMM yyyy HH:mm:ss}, IsRunning = {IsRunning}";
         }
     }
 
@@ -66,7 +74,7 @@ namespace Every
         /// </summary>
         public TMetadata Metadata { get; set; }
 
-        internal Job(Action<Job<TMetadata>> action, JobConfiguration config, TMetadata metadata)
+        internal Job(JobConfiguration config, Action<Job<TMetadata>> action, TMetadata metadata)
             : base(config)
         {
             Metadata = metadata;
