@@ -1,5 +1,6 @@
 ﻿using Every.Builders;
 using System;
+using System.Threading.Tasks;
 
 namespace Every
 {
@@ -7,10 +8,7 @@ namespace Every
     {
         protected Func<DateTimeOffset, DateTimeOffset> CalculateNext { get; set; }
 
-        /// <summary>
-        /// Gets or sets the action that this job executes.
-        /// </summary>
-        public Action<Job> Action { get; set; }
+        protected Action<Job> Action { get; set; }
 
         /// <summary>
         /// Gets next time that this job will be executed at.

@@ -1,6 +1,7 @@
 ﻿using Every;
 using System;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Tester
 {
@@ -8,13 +9,16 @@ namespace Tester
     {
         static void Main(string[] args)
         {
-            Action job = () =>
-            {
-                Thread.Sleep(5000);
-                Console.WriteLine($"Boem {DateTime.Now.ToString("HH:mm:ss")}");
-            };
+            //Func<Task> job = 
 
-            Ever.y().Second.Do(job, false);
+            Ever.y().Second.Do(async () =>
+            {
+                await Task.Run(() =>
+                {
+                    Thread.Sleep(5000);
+                    Console.WriteLine($"Boem {DateTime.Now.ToString("HH:mm:ss")}");
+                });
+            }, false);
 
             Thread.Sleep(Timeout.Infinite);
         }
