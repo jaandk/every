@@ -4,7 +4,7 @@ using System;
 namespace Every
 {
     /// <summary>
-    /// Base class for creating jobs.
+    /// Base class for creating recurring jobs.
     /// </summary>
     public static class Ever
     {

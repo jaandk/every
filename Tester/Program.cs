@@ -9,16 +9,10 @@ namespace Tester
     {
         static void Main(string[] args)
         {
-            //Func<Task> job = 
+            Action job = () => Console.WriteLine("hoi");
 
-            Ever.y().Second.Do(async () =>
-            {
-                await Task.Run(() =>
-                {
-                    Thread.Sleep(5000);
-                    Console.WriteLine($"Boem {DateTime.Now.ToString("HH:mm:ss")}");
-                });
-            }, false);
+            Once.After(2).Seconds().Do(job);
+            Once.AfterOne.Second().Do(job);
 
             Thread.Sleep(Timeout.Infinite);
         }

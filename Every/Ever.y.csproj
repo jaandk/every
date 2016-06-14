@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Once.cs" />
+    <Compile Include="Builders\AfterSingularBuilder.cs" />
+    <Compile Include="Builders\AfterPluralBuilder.cs" />
     <Compile Include="Builders\AtBuilder.cs" />
     <Compile Include="Builders\BuilderBase.cs" />
     <Compile Include="Builders\DaysOfWeekBuilder.cs" />
