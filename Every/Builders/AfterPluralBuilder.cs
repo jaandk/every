@@ -9,32 +9,44 @@ namespace Every.Builders
         {
         }
 
-        public JobBuilder Seconds()
+        public JobBuilder Seconds
         {
-            Configuration.First = DateTimeOffset.Now.AddSeconds(Configuration.N);
+            get
+            {
+                Configuration.First = DateTimeOffset.Now.AddSeconds(Configuration.N);
 
-            return new JobBuilder(Configuration);
+                return new JobBuilder(Configuration);
+            }
         }
 
-        public JobBuilder Minutes()
+        public JobBuilder Minutes
         {
-            Configuration.First = DateTimeOffset.Now.AddMinutes(Configuration.N);
+            get
+            {
+                Configuration.First = DateTimeOffset.Now.AddMinutes(Configuration.N);
 
-            return new JobBuilder(Configuration);
+                return new JobBuilder(Configuration);
+            }
         }
 
-        public JobBuilder Hours()
+        public JobBuilder Hours
         {
-            Configuration.First = DateTimeOffset.Now.AddHours(Configuration.N);
+            get
+            {
+                Configuration.First = DateTimeOffset.Now.AddHours(Configuration.N);
 
-            return new JobBuilder(Configuration);
+                return new JobBuilder(Configuration);
+            }
         }
 
-        public JobBuilder Days()
+        public JobBuilder Days
         {
-            Configuration.First = DateTimeOffset.Now.AddDays(Configuration.N);
+            get
+            {
+                Configuration.First = DateTimeOffset.Now.AddDays(Configuration.N);
 
-            return new JobBuilder(Configuration);
+                return new JobBuilder(Configuration);
+            }
         }
     }
 }
