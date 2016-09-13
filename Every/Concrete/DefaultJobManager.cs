@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 
 namespace Every.Concrete
 {
-    public class DefaultJobManager : IJobManager 
+    public class DefaultJobManager : IJobManager
     {
         private const int TimerResolution = 250;
 
         private Timer _timer;
+
+        public event JobExceptionOccurredEventHandler JobExceptionOccurred;
 
         public ICollection<Job> Jobs { get; }
 
@@ -46,7 +48,17 @@ namespace Every.Concrete
         {
             var now = DateTimeOffset.Now;
 
-            Parallel.ForEach(Jobs.Where(j => now >= j.Next && (j.RunSimultaneously || !j.IsRunning)), job => job.Execute());
+            Parallel.ForEach(Jobs.Where(j => now >= j.Next && (j.RunSimultaneously || !j.IsRunning)), job =>
+            {
+                try
+                {
+                    job.Execute();
+                }
+                catch (Exception exception)
+                {
+                    JobExceptionOccurred(exception);
+                }
+            });
         }
     }
 }
