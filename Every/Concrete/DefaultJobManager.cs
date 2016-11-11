@@ -26,7 +26,7 @@ namespace Every.Concrete
 
         public void Dispose()
         {
-            foreach (var job in Jobs.ToList())
+            foreach (var job in Jobs.ToArray())
                 job.Cancel();
         }
 
