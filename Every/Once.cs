@@ -4,10 +4,13 @@ using System;
 namespace Every
 {
     /// <summary>
-    /// Base class for creating one-off jobs.
+    /// Starting point for creating one-off jobs.
     /// </summary>
     public static class Once
     {
+        /// <summary>
+        /// Creates a singular job (after one second, after one minute, ...).
+        /// </summary>
         public static AfterSingularBuilder AfterOne
         {
             get
@@ -19,6 +22,10 @@ namespace Every
             }
         }
 
+        /// <summary>
+        /// Creates a plural job (after n seconds, after n minutes, ...).
+        /// </summary>
+        /// <param name="n">The amount of units (seconds, minutes, ...).</param>
         public static AfterPluralBuilder After(int n)
         {
             var jobConfig = new JobConfiguration(n);

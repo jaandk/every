@@ -10,14 +10,14 @@ namespace Every.Builders
         }
 
 
-        public InBuilder At(int hours, int minutes, int seconds = 0)
+        public UtcBuilder At(int hours, int minutes = 0, int seconds = 0)
         {
             var first = Configuration.First;
             Configuration.First = new DateTimeOffset(first.Year, first.Month, first.Day, hours, minutes, seconds, first.Offset);
 
-            return new InBuilder(Configuration);
+            return new UtcBuilder(Configuration);
         }
 
-        public InBuilder At(TimeSpan at) => At(at.Hours, at.Minutes, at.Seconds);
+        public UtcBuilder At(TimeSpan at) => At(at.Hours, at.Minutes, at.Seconds);
     }
 }

@@ -63,10 +63,7 @@ namespace Every
         }
 
 
-        public override string ToString()
-        {
-            return $"Job, Next = {Next:dddd d MMMM yyyy HH:mm:ss}, IsRunning = {IsRunning}";
-        }
+        public override string ToString() => $"Job, Next = {Next:dddd d MMMM yyyy HH:mm:ss}, IsRunning = {IsRunning}";
     }
 
     public class Job<TMetadata> : Job

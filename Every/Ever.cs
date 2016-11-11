@@ -4,14 +4,13 @@ using System;
 namespace Every
 {
     /// <summary>
-    /// Base class for creating recurring jobs.
+    /// Starting point for creating recurring jobs.
     /// </summary>
     public static class Ever
     {
         /// <summary>
         /// Creates a singular job (every second, every minute, ...).
         /// </summary>
-        /// <returns></returns>
         public static SingularBuilder y()
         {
             return new SingularBuilder(new JobConfiguration());
@@ -21,7 +20,6 @@ namespace Every
         /// Creates a plural job (every n seconds, every n minutes, ...) or an ordinal job (every nth Friday, ...).
         /// </summary>
         /// <param name="n">The amount of units (seconds, minutes, ...) or the ordinal number.</param>
-        /// <returns></returns>
         public static PluralBuilder y(int n)
         {
             if (n < 1)

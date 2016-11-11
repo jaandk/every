@@ -2,21 +2,21 @@
 
 namespace Every.Builders
 {
-    public class InBuilder : JobBuilder
+    public class UtcBuilder : JobBuilder
     {
-        internal InBuilder(JobConfiguration config)
+        internal UtcBuilder(JobConfiguration config)
             : base(config)
         {
         }
 
 
-        public JobBuilder In(TimeSpan utcOffset)
+        public JobBuilder Utc(TimeSpan utcOffset)
         {
             Configuration.First = new DateTimeOffset(Configuration.First.DateTime, utcOffset);
 
             return new JobBuilder(Configuration);
         }
 
-        public JobBuilder In(int hours, int minutes) => In(new TimeSpan(hours, minutes, 0));
+        public JobBuilder Utc(int hours = 0, int minutes = 0) => Utc(new TimeSpan(hours, minutes, 0));
     }
 }

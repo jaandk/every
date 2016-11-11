@@ -10,7 +10,7 @@ namespace Every.Builders
         }
 
 
-        public InBuilder To(TimeSpan to)
+        public UtcBuilder To(TimeSpan to)
         {
             Configuration.To = to;
 
@@ -31,9 +31,9 @@ namespace Every.Builders
                 return next;
             };
 
-            return new InBuilder(Configuration);
+            return new UtcBuilder(Configuration);
         }
 
-        public InBuilder To(int hours, int minutes, int seconds = 0) => To(new TimeSpan(hours, minutes, seconds));
+        public UtcBuilder To(int hours, int minutes = 0, int seconds = 0) => To(new TimeSpan(hours, minutes, seconds));
     }
 }

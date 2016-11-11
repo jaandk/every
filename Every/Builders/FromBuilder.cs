@@ -17,6 +17,6 @@ namespace Every.Builders
             return new ToBuilder(Configuration);
         }
 
-        public ToBuilder From(int hours, int minutes, int seconds = 0) => From(new TimeSpan(hours, minutes, seconds));
+        public ToBuilder From(int hours, int minutes = 0, int seconds = 0) => From(new TimeSpan(hours, minutes, seconds));
     }
 }

@@ -21,6 +21,11 @@ namespace Every.Builders
             return jobContainer;
         }
 
+        public Job Do(Action job, bool runSimultaneously = true) => Do(_ => job(), runSimultaneously);
+        public Job Do(Func<Task> job, bool runSimultaneously = true) => Do(_ => Task.WaitAll(job()), runSimultaneously);
+        public Job Do(Func<Job, Task> job, bool runSimultaneously = true) => Do((j) => Task.WaitAll(job(j)), runSimultaneously);
+
+
         public Job<TMetadata> Do<TMetadata>(Action<Job<TMetadata>> job, TMetadata metadata, bool runSimultaneously = true)
         {
             Configuration.RunSimultaneously = runSimultaneously;
@@ -29,11 +34,8 @@ namespace Every.Builders
 
             JobManager.Current.Jobs.Add(jobContainer);
             return jobContainer;
-        }
-
-        public Job Do(Action job, bool runSimultaneously = true) => Do(_ => job(), runSimultaneously);
-        public Job Do(Func<Task> job, bool runSimultaneously = true) => Do(_ => Task.WaitAll(job()), runSimultaneously);
-        public Job Do(Func<Job, Task> job, bool runSimultaneously = true) => Do((j) => Task.WaitAll(job(j)), runSimultaneously);
+        }        
+        
         public Job Do<TMetadata>(Func<Job<TMetadata>, Task> job, TMetadata metadata, bool runSimultaneously = true) => Do((j) => Task.WaitAll(job(j)), metadata, runSimultaneously);
     }
 }

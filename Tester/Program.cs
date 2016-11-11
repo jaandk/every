@@ -8,6 +8,8 @@ namespace Tester
     {
         static void Main(string[] args)
         {
+            Ever.y().Day.At(15, 00).Utc().Do(() => Console.WriteLine("test"));
+
             JobManager.Current.JobExceptionOccurred += Current_JobExceptionOccurred;
 
             Action job = () =>

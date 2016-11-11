@@ -34,7 +34,7 @@ namespace Every.Concrete
         public void Start()
         {
             if (_timer == null)
-                _timer = new Timer(OnTimerElapsed, null, 0, 250);
+                _timer = new Timer(OnTimerElapsed, null, 0, TimerResolution);
         }
 
         public void Stop()
