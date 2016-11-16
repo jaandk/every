@@ -18,7 +18,7 @@ Once.After(2).Seconds.Do(() => Console.WriteLine("Once, after 2 seconds"));
 ```c#
 class MyClass { public string MyProp { get; set; } }
 //...
-Action<Job<MyClass>> job = (j) => Console.WriteLine($"My job has metadata: {job.Metadata.MyProp}");
+Action<Job<MyClass>> job = (j) => Console.WriteLine($"My job has metadata: {j.Metadata.MyProp}");
 var metadata = new MyClass { MyProp = "Hello World!" };
 
 Ever.y(Thurs.day).At(4, 00).Do(job, metadata); // Every Thursday at 04:00, do job
