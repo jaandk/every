@@ -15,7 +15,7 @@ namespace Every.Builders
         public DateTimeOffset First { get; set; }
         public Func<DateTimeOffset, DateTimeOffset> CalculateNext { get; set; }
 
-        public bool RunSimultaneously { get; set; }
+        public bool Overlap { get; set; }
 
         internal JobConfiguration(int n = 1)
         {

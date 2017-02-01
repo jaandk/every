@@ -11,9 +11,9 @@ namespace Every.Builders
         }
 
 
-        public Job Do(Action<Job> job, bool runSimultaneously = true)
+        public Job Do(Action<Job> job, bool overlap = true)
         {
-            Configuration.RunSimultaneously = runSimultaneously;
+            Configuration.Overlap = overlap;
 
             var jobContainer = new Job(Configuration, job);
 
@@ -21,14 +21,14 @@ namespace Every.Builders
             return jobContainer;
         }
 
-        public Job Do(Action job, bool runSimultaneously = true) => Do(_ => job(), runSimultaneously);
-        public Job Do(Func<Task> job, bool runSimultaneously = true) => Do(_ => Task.WaitAll(job()), runSimultaneously);
-        public Job Do(Func<Job, Task> job, bool runSimultaneously = true) => Do((j) => Task.WaitAll(job(j)), runSimultaneously);
+        public Job Do(Action job, bool overlap = true) => Do(_ => job(), overlap);
+        public Job Do(Func<Task> job, bool overlap = true) => Do(_ => Task.WaitAll(job()), overlap);
+        public Job Do(Func<Job, Task> job, bool overlap = true) => Do((j) => Task.WaitAll(job(j)), overlap);
 
 
-        public Job<TMetadata> Do<TMetadata>(Action<Job<TMetadata>> job, TMetadata metadata, bool runSimultaneously = true)
+        public Job<TMetadata> Do<TMetadata>(Action<Job<TMetadata>> job, TMetadata metadata, bool overlap = true)
         {
-            Configuration.RunSimultaneously = runSimultaneously;
+            Configuration.Overlap = overlap;
 
             var jobContainer = new Job<TMetadata>(Configuration, job, metadata);
 
@@ -36,6 +36,6 @@ namespace Every.Builders
             return jobContainer;
         }        
         
-        public Job Do<TMetadata>(Func<Job<TMetadata>, Task> job, TMetadata metadata, bool runSimultaneously = true) => Do((j) => Task.WaitAll(job(j)), metadata, runSimultaneously);
+        public Job Do<TMetadata>(Func<Job<TMetadata>, Task> job, TMetadata metadata, bool overlap = true) => Do((j) => Task.WaitAll(job(j)), metadata, overlap);
     }
 }

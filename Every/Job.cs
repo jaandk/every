@@ -23,7 +23,7 @@ namespace Every
             Next = config.First;
             CalculateNext = config.CalculateNext;
             
-            RunSimultaneously = config.RunSimultaneously;
+            RunSimultaneously = config.Overlap;
 
             if (Next < DateTimeOffset.Now)
                 Next = CalculateNext(Next);
@@ -51,15 +51,20 @@ namespace Every
         {
             IsRunning = true;
 
-            if (RunSimultaneously && Next < DateTimeOffset.Now)
-                Next = CalculateNext(Next);
+            try
+            {
+                if (RunSimultaneously && Next < DateTimeOffset.Now)
+                    Next = CalculateNext(Next);
 
-            Action(this);
+                Action(this);
 
-            if (!RunSimultaneously && Next < DateTimeOffset.Now)
-                Next = CalculateNext(DateTimeOffset.Now);
-
-            IsRunning = false;        
+                if (!RunSimultaneously && Next < DateTimeOffset.Now)
+                    Next = CalculateNext(DateTimeOffset.Now);
+            }
+            finally
+            {
+                IsRunning = false;
+            }
         }
 
 
