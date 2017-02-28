@@ -4,6 +4,9 @@ Ever.y is a fluent API job scheduling engine for .NET.
 
 Please feel free to issue PRs or suggest improvements or new features.
 
+## Installation
+Ever.y can be found on [NuGet](https://www.nuget.org/packages/Ever.y). Just search for _Ever.y_ and you should be able to find it!
+
 ## Examples
 
 ```c#
