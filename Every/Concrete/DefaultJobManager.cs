@@ -13,6 +13,9 @@ namespace Every.Concrete
 
         private Timer _timer;
 
+        /// <summary>
+        /// Fires when an job throws an exception.
+        /// </summary>
         public event JobExceptionOccurredEventHandler JobExceptionOccurred;
 
         public ICollection<Job> Jobs { get; }
@@ -56,7 +59,7 @@ namespace Every.Concrete
                 }
                 catch (Exception exception)
                 {
-                    JobExceptionOccurred(exception);
+                    JobExceptionOccurred?.Invoke(exception);
                 }
             });
         }
