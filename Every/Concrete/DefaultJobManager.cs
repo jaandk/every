@@ -50,8 +50,9 @@ namespace Every.Concrete
         private void OnTimerElapsed(object state)
         {
             var now = DateTimeOffset.Now;
+            var jobs = Jobs.ToArray();
 
-            Parallel.ForEach(Jobs.Where(j => now >= j.Next && (j.RunSimultaneously || !j.IsRunning)), job =>
+            Parallel.ForEach(jobs.Where(j => now >= j.Next && (j.RunSimultaneously || !j.IsRunning)), job =>
             {
                 try
                 {
