@@ -8,7 +8,7 @@
     <iconUrl>https://raw.githubusercontent.com/mlowijs/every/master/icon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Ever.y is a fluent API job scheduling engine for .NET.</description>
-    <copyright>Copyright (c) 2016, Michiel Lowijs</copyright>
+    <copyright>Copyright (c) 2016-2019, Michiel Lowijs</copyright>
     <tags>scheduler, jobs, tasks, timer</tags>
   </metadata>
   <files>
