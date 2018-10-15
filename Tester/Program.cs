@@ -1,4 +1,5 @@
 ﻿using Every;
+using Every.Utilities;
 using System;
 using System.Threading;
 
@@ -8,18 +9,13 @@ namespace Tester
     {
         static void Main(string[] args)
         {
-            Ever.y().Day.At(15, 00).Utc().Do(() => Console.WriteLine("test"));
+            //Ever.y().Day.At(15, 00).Utc().Do(() => Console.WriteLine("test"));
 
             JobManager.Current.JobExceptionOccurred += Current_JobExceptionOccurred;
 
-            Action job = () =>
-            {
-                throw new Exception("test");
-            };
+            //Ever.y(2).Seconds.Do(() => Console.WriteLine("hoi"));
 
-            Once.After(4).Seconds.Do(job);
-
-            Ever.y(2).Seconds.Do(() => Console.WriteLine("hoi"));
+            Ever.y(31).thOfTheMonth.At(17).Do(() => Console.WriteLine("biem"));
 
             Thread.Sleep(Timeout.Infinite);
         }

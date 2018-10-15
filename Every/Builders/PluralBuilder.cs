@@ -1,4 +1,5 @@
 ﻿using Every.Exceptions;
+using Every.Utilities;
 using System;
 
 namespace Every.Builders
@@ -52,37 +53,72 @@ namespace Every.Builders
         }
 
 
-        public NthDayOfWeekBuilder st(DayOfWeek day)
+        public AtBuilder stOfTheMonth
         {
-            if (Configuration.N % 10 != 1)
-                throw new GrammarException($"{Configuration.N}st");
-
-            Configuration.DayOfWeek = day;
-            return new NthDayOfWeekBuilder(Configuration);
+            get
+            {
+                return OrdinalOfTheMonth(GrammarChecker.St);
+            }
         }
 
-        public NthDayOfWeekBuilder nd(DayOfWeek day)
+        public AtBuilder ndOfTheMonth
         {
-            if (Configuration.N % 10 != 2)
-                throw new GrammarException($"{Configuration.N}nd");
-
-            Configuration.DayOfWeek = day;
-            return new NthDayOfWeekBuilder(Configuration);
+            get
+            {
+                return OrdinalOfTheMonth(GrammarChecker.Nd);
+            }
         }
 
-        public NthDayOfWeekBuilder rd(DayOfWeek day)
+        public AtBuilder rdOfTheMonth
         {
-            if (Configuration.N % 10 != 3)
-                throw new GrammarException($"{Configuration.N}rd");
-
-            Configuration.DayOfWeek = day;
-            return new NthDayOfWeekBuilder(Configuration);
+            get
+            {
+                return OrdinalOfTheMonth(GrammarChecker.Rd);
+            }
         }
 
-        public NthDayOfWeekBuilder th(DayOfWeek day)
+        public AtBuilder thOfTheMonth
         {
-            if (Configuration.N % 10 < 4)
-                throw new GrammarException($"{Configuration.N}th");
+            get
+            {
+                return OrdinalOfTheMonth(GrammarChecker.Th);
+            }
+        }
+
+        private AtBuilder OrdinalOfTheMonth(string ordinal)
+        {
+            GrammarChecker.CheckGrammar(Configuration.N, ordinal);
+
+            var first = Configuration.First;
+            first = new DateTimeOffset(first.Year, first.Month, Configuration.N, first.Hour, first.Minute, first.Second, first.Offset);
+
+            if (first < DateTimeOffset.Now)
+                first = first.AddMonths(1);
+
+            Configuration.First = first;
+
+            Configuration.CalculateNext = next =>
+            {
+                next = next.AddMonths(1);
+
+                return next;
+            };
+
+            return new AtBuilder(Configuration);
+        }
+
+
+        public NthDayOfWeekBuilder st(DayOfWeek day) => Ordinal(day, GrammarChecker.St);
+
+        public NthDayOfWeekBuilder nd(DayOfWeek day) => Ordinal(day, GrammarChecker.Nd);
+
+        public NthDayOfWeekBuilder rd(DayOfWeek day) => Ordinal(day, GrammarChecker.Rd);
+
+        public NthDayOfWeekBuilder th(DayOfWeek day) => Ordinal(day, GrammarChecker.Th);
+
+        private NthDayOfWeekBuilder Ordinal(DayOfWeek day, string ordinal)
+        {
+            GrammarChecker.CheckGrammar(Configuration.N, ordinal);
 
             Configuration.DayOfWeek = day;
             return new NthDayOfWeekBuilder(Configuration);
